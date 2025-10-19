@@ -121,7 +121,7 @@ print(max_sharpe['weights'])
 
 # Frontière efficiente
 frontier = EfficientFrontier(optimizer)
-frontier.plot_frontier()
+frontier.plot()
 ```
 
 ### Analyse de Risque
@@ -164,7 +164,7 @@ print(f"Sharpe: {results['Sharpe Ratio']:.3f}")
 print(f"Max DD: {results['Max Drawdown']:.2%}")
 
 # Visualisation
-backtester.plot()
+backtester.plot_results()
 ```
 
 ## 📖 Documentation
