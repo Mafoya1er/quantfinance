@@ -24,12 +24,6 @@ setup.py
 ./quantfinance/utils/helpers.py
 ./quantfinance/utils/plotting.py
 .github/workflows/deploy.yml
-dist/quantfinance-0.1.0-py3-none-any.whl
-dist/quantfinance-0.1.0.tar.gz
-dist/quantfinance-0.1.1-py3-none-any.whl
-dist/quantfinance-0.1.1.tar.gz
-dist/quantfinance-0.1.2-py3-none-any.whl
-dist/quantfinance-0.1.2.tar.gz
 docs/Makefile
 docs/conf.py
 docs/index.html
