@@ -15,11 +15,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-from mon_package.utils.data import DataLoader, DataCleaner
-from mon_package.portfolio.optimization import PortfolioOptimizer
-from mon_package.risk.var import VaRCalculator
-from mon_package.risk.metrics import PerformanceAnalyzer
-from mon_package.utils.plotting import Plotter
+from quantfinance.utils.data import DataLoader, DataCleaner
+from quantfinance.portfolio.optimization import PortfolioOptimizer
+from quantfinance.risk.var import VaRCalculator
+from quantfinance.risk.metrics import PerformanceAnalyzer
+from quantfinance.utils.plotting import Plotter
 
 
 def main():
@@ -130,7 +130,7 @@ def main():
         print(f"    VaR:  {var_hist:.4f} ({var_hist:.2%})")
         print(f"    CVaR: {es_hist:.4f} ({es_hist:.2%})")
     
-    from mon_package.risk.metrics import RiskMetrics
+    from quantfinance.risk.metrics import RiskMetrics
     
     print("\nMétriques de risque:")
     print(f"  Max Drawdown: {RiskMetrics.max_drawdown(portfolio_returns):.2%}")

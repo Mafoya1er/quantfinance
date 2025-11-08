@@ -11,10 +11,10 @@ Ce script démontre :
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from mon_package.portfolio.optimization import PortfolioOptimizer, EfficientFrontier
-from mon_package.portfolio.allocation import AssetAllocator
-from mon_package.utils.data import DataLoader
-from mon_package.utils.plotting import Plotter
+from quantfinance.portfolio.optimization import PortfolioOptimizer, EfficientFrontier
+from quantfinance.portfolio.allocation import AssetAllocator
+from quantfinance.utils.data import DataLoader
+from quantfinance.utils.plotting import Plotter
 
 
 def main():

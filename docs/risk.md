@@ -1,3 +1,5 @@
+## Analyse du Risque (`quantfinance.risk`)
+
 ### `RiskMetrics`
 
 Calculateur de métriques de risque.

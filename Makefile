@@ -40,7 +40,7 @@ test: ## Lance les tests
 
 test-cov: ## Lance les tests avec couverture
 	@echo "$(BLUE)Lancement des tests avec couverture...$(NC)"
-	$(PYTEST) tests/ -v --cov=mon_package --cov-report=html --cov-report=term
+	$(PYTEST) tests/ -v --cov=quantfinance --cov-report=html --cov-report=term
 	@echo "$(GREEN)✓ Rapport de couverture généré dans htmlcov/$(NC)"
 
 test-fast: ## Lance les tests rapides (sans les tests lents)
@@ -54,29 +54,29 @@ test-watch: ## Lance les tests en mode watch
 
 lint: ## Vérifie le code avec flake8
 	@echo "$(BLUE)Vérification du code avec flake8...$(NC)"
-	$(FLAKE8) mon_package tests
+	$(FLAKE8) quantfinance tests
 	@echo "$(GREEN)✓ Linting terminé$(NC)"
 
 type-check: ## Vérifie les types avec mypy
 	@echo "$(BLUE)Vérification des types...$(NC)"
-	$(MYPY) mon_package
+	$(MYPY) quantfinance
 	@echo "$(GREEN)✓ Type checking terminé$(NC)"
 
 pylint: ## Vérifie le code avec pylint
 	@echo "$(BLUE)Vérification avec pylint...$(NC)"
-	$(PYLINT) mon_package
+	$(PYLINT) quantfinance
 	@echo "$(GREEN)✓ Pylint terminé$(NC)"
 
 format: ## Formate le code avec black et isort
 	@echo "$(BLUE)Formatage du code...$(NC)"
-	$(BLACK) mon_package tests examples
-	$(ISORT) mon_package tests examples
+	$(BLACK) quantfinance tests examples
+	$(ISORT) quantfinance tests examples
 	@echo "$(GREEN)✓ Formatage terminé$(NC)"
 
 format-check: ## Vérifie le formatage sans modifier
 	@echo "$(BLUE)Vérification du formatage...$(NC)"
-	$(BLACK) --check mon_package tests examples
-	$(ISORT) --check-only mon_package tests examples
+	$(BLACK) --check quantfinance tests examples
+	$(ISORT) --check-only quantfinance tests examples
 	@echo "$(GREEN)✓ Vérification terminée$(NC)"
 
 check-all: format-check lint type-check ## Lance toutes les vérifications
@@ -139,7 +139,7 @@ benchmark: ## Lance les benchmarks de performance
 
 security: ## Vérifie les vulnérabilités de sécurité
 	@echo "$(BLUE)Vérification de sécurité...$(NC)"
-	$(PYTHON) -m bandit -r mon_package
+	$(PYTHON) -m bandit -r quantfinance
 	$(PYTHON) -m safety check
 	@echo "$(GREEN)✓ Vérification terminée$(NC)"
 

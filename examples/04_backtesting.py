@@ -11,13 +11,13 @@ Ce script démontre :
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from mon_package.portfolio.backtesting import (
+from quantfinance.portfolio.backtesting import (
     Backtester,
     Strategy,
     BuyAndHoldStrategy,
     MovingAverageCrossover
 )
-from mon_package.utils.data import DataLoader
+from quantfinance.utils.data import DataLoader
 
 
 class MomentumStrategy(Strategy):

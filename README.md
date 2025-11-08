@@ -1,4 +1,4 @@
-# QuantFinance 📊
+# QuantFinance 
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyPI version](https://badge.fury.io/py/quantfinance.svg)](https://badge.fury.io/py/quantfinance)
@@ -12,23 +12,23 @@
 
 [Documentation](https://quantfinance.readthedocs.io) | [PyPI](https://pypi.org/project/quantfinance/) | [GitHub](https://github.com/Mafoya1er/quantfinance)
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-### 📈 Pricing d'Instruments Financiers
+### Pricing d'Instruments Financiers
 - **Options** : Black-Scholes, Binomial Tree, Monte Carlo
 - **Grecques** : Delta, Gamma, Vega, Theta, Rho
 - **Volatilité Implicite** : Méthode de Newton-Raphson
 - **Options Exotiques** : Asiatiques, Barrières
 - **Obligations** : Pricing, YTM, Duration, Convexité
 
-### ⚠️ Gestion des Risques
+### Gestion des Risques
 - **Value at Risk (VaR)** : Historique, Paramétrique, EWMA, Monte Carlo
 - **Expected Shortfall (CVaR)**
 - **Métriques** : Sharpe, Sortino, Calmar, Omega, Information Ratio
 - **Drawdown** : Maximum, Duration, Série temporelle
 - **Stress Testing** : Scénarios, Analyse historique, Simulation
 
-### 📊 Optimisation de Portefeuille
+### Optimisation de Portefeuille
 - **Markowitz** : Variance minimale, Sharpe maximum, Frontière efficiente
 - **Risk Parity** : Contribution égale au risque
 - **Black-Litterman** : Intégration de vues d'investissement
@@ -36,20 +36,20 @@
 - **Maximum Diversification**
 - **Rééquilibrage** : Périodique, Seuils, Bandes de tolérance
 
-### 🔄 Backtesting
+### Backtesting
 - Framework de backtesting flexible
 - Stratégies prédéfinies (MA Crossover, Momentum, etc.)
 - Prise en compte des coûts de transaction
 - Analyse de performance détaillée
 
-### 🛠️ Utilitaires
+### Utilitaires
 - Chargement de données (CSV, Yahoo Finance, API)
 - Génération de données synthétiques
 - Nettoyage et préparation de données
 - Indicateurs techniques (SMA, EMA, RSI, MACD, Bollinger Bands)
 - Visualisations avancées
 
-## 🚀 Installation
+## Installation
 
 ### Via pip (recommandé)
 
@@ -78,7 +78,7 @@ pip install quantfinance[dev]
 pip install quantfinance[all]
 ```
 
-## 📚 Démarrage Rapide
+## Démarrage Rapide
 
 ### Pricing d'Options
 
@@ -167,7 +167,7 @@ print(f"Max DD: {results['Max Drawdown']:.2%}")
 backtester.plot_results()
 ```
 
-## 📖 Documentation
+## Documentation
 
 Documentation complète disponible sur [ReadTheDocs](https://quantfinance.readthedocs.io).
 
@@ -185,7 +185,7 @@ Documentation complète disponible sur [ReadTheDocs](https://quantfinance.readth
 - [Portfolio](https://quantfinance.readthedocs.io/en/latest/api/portfolio.html)
 - [Utils](https://quantfinance.readthedocs.io/en/latest/api/utils.html)
 
-## 🧪 Tests
+## Tests
 
 ```bash
 # Lancer tous les tests
@@ -198,7 +198,7 @@ pytest --cov=quantfinance --cov-report=html
 pytest -m "not slow"
 ```
 
-## 🤝 Contribution
+##  Contribution
 
 Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -208,28 +208,28 @@ Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING
 4. Push (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
 
-## 📝 Licence
+##  Licence
 
 Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
-## 🙏 Remerciements
+## Remerciements
 
 - [NumPy](https://numpy.org/) - Calculs numériques
 - [Pandas](https://pandas.pydata.org/) - Manipulation de données
 - [SciPy](https://scipy.org/) - Outils scientifiques
 - [Matplotlib](https://matplotlib.org/) - Visualisations
 
-## 📧 Contact
+## Contact
 
 Marcel ALOEKPO - [LinkedIn](https://www.linkedin.com/in/marcel-aloekpo-21b42619a) -marcelaloekpo@gmail.com
 
 Projet: [https://github.com/Mafoya1er/quantfinance](https://github.com/Mafoya1er/quantfinance)
 
-## ⭐ Support
+## Support
 
-Si vous trouvez ce projet utile, n'hésitez pas à lui donner une étoile ⭐ sur [GitHub](https://github.com/Mafoya1er/quantfinance) !
+Si vous trouvez ce projet utile, n'hésitez pas à lui donner une étoile sur [GitHub](https://github.com/Mafoya1er/quantfinance) !
 
-## 📊 Statistiques
+##  Statistiques
 
 ![GitHub stars](https://img.shields.io/github/stars/Mafoya1er/quantfinance?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Mafoya1er/quantfinance?style=social)

@@ -23,10 +23,10 @@ release = '0.1.1'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',  # Pour docstrings Google/NumPy style
-    'sphinx.ext.intersphinx',  # Pour liens vers d'autres docs
-    'myst_parser',  # Si tu utilises Markdown
-    'sphinx_copybutton',  # Pour copier le code
+    'sphinx.ext.napoleon',  
+    'sphinx.ext.intersphinx',  
+    'myst_parser',  
+    'sphinx_copybutton',  
 ]
 
 templates_path = ['_templates']
@@ -42,6 +42,6 @@ html_static_path = ['_static']
 
 
 
-# Pour copier le code
+
 copybutton_prompt_text = ">>> "
 copybutton_prompt_is_regexp = True

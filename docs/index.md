@@ -1,11 +1,11 @@
-# 📚 QuantFinance — Documentation
+# QuantFinance — Documentation
 
 
 > *Une bibliothèque Python pour la finance quantitative : optimisation de portefeuille, pricing d'options, analyse du risque, backtesting, rééquilibrage, allocation d'actifs, obligations, courbes de taux, données financières et visualisation.*
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ```bash
 pip install quantfinance
@@ -14,7 +14,7 @@ pip install quantfinance
 ---
 
 
-## 🧩 Modules
+## Modules
 
 - [Portfolio Optimization](portfolio.md)
 - [Pricing d'Options](pricing.md)
@@ -23,13 +23,13 @@ pip install quantfinance
 
 ---
 
-## 📜 Licence
+## Licence
 
 MIT — tu peux utiliser, modifier et redistribuer ce code librement.
 
 ---
 
-## 📬 Support
+## Support
 
 Pour les bugs, suggestions ou questions :
 
