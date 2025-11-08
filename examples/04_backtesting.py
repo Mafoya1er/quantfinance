@@ -152,7 +152,7 @@ def main():
     
     # Subplot 2: Drawdown (MA Cross 20/50)
     plt.subplot(3, 2, 2)
-    from mon_package.risk.metrics import RiskMetrics
+    from quantfinance.risk.metrics import RiskMetrics
     strategy_name = 'MA Cross (20/50)'
     returns = results[strategy_name]['backtester'].results['returns']
     dd = RiskMetrics.drawdown_series(returns)
