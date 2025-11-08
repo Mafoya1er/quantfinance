@@ -6,6 +6,7 @@ coverage.xml
 pyproject.toml
 readthedocs.yml
 requirements.txt
+setup.py
 ./quantfinance/__init__.py
 ./quantfinance/portfolio/__init__.py
 ./quantfinance/portfolio/allocation.py
@@ -40,6 +41,7 @@ docs/pricing.md
 docs/requirements.txt
 docs/risk.md
 docs/utils.md
+docs/_static/custom.css
 docs/user_guide/installation.rst
 docs/user_guide/quickstart.rst
 examples/.gitkeep

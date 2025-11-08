@@ -12,9 +12,9 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="quantfinance",
-    version="0.1.0",
-    author="Votre Nom",
-    author_email="votre.email@example.com",
+    version="0.1.2",
+    author="Marcel ALOEKPO",
+    author_email="marcelaloekpo@gmail.com",
     description="Package Python pour la finance quantitative",
     long_description=long_description,
     long_description_content_type="text/markdown",

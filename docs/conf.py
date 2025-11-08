@@ -13,7 +13,7 @@ copyright = '2025, Marcel ALOEKPO'
 author = 'Marcel ALOEKPO'
 
 
-release = '0.1.1'
+release = '0.1.2'
 
 
 
