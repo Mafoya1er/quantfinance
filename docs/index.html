@@ -242,7 +242,11 @@
  /* BADGES HERO */
  .badge-img { height:20px; vertical-align:middle; border-radius:3px; }
 
- </style>
+ 
+    .email-display::before { content: attr(data-user); }
+    .email-display::after  { content: attr(data-at) attr(data-domain); }
+
+  </style>
 </head>
 <body>
 <div class="wrapper">
@@ -1531,7 +1535,7 @@ pytest tests/test_pricing.py -v</pre></div>
  </ol>
  <div style="margin-top:36px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-align:center;">
  <p style="font-size:14px;color:var(--muted);margin-bottom:6px;">Auteur : <strong style="color:var(--text)">Marcel ALOEKPO</strong></p>
- <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1dcd0c3d2d4ddd0ddded4dac1def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></p>
+ <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><span class="email-display" data-user="marcelaloekpo" data-at="@" data-domain="gmail.com"></span></p>
  <div style="display:flex;gap:12px;justify-content:center;">
  <a href="https://github.com/Mafoya1er/quantfinance" class="btn btn-ghost" target="_blank">GitHub</a>
  <a href="https://pypi.org/project/quantfinance/" class="btn btn-primary" target="_blank">PyPI</a>
