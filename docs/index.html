@@ -1538,14 +1538,144 @@ pytest tests/test_pricing.py -v</pre></div>
  <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><span class="email-display" data-user="marcelaloekpo" data-at="@" data-domain="gmail.com"></span></p>
  <div style="display:flex;gap:12px;justify-content:center;">
  <a href="https://github.com/Mafoya1er/quantfinance" class="btn btn-ghost" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/marcel-aloekpo-21b42619a" class="btn btn-ghost" target="_blank">LinkedIn</a>
  <a href="https://pypi.org/project/quantfinance/" class="btn btn-primary" target="_blank">PyPI</a>
  </div>
  <p style="margin-top:18px;font-size:12px;color:var(--border);">Made with for quantitative finance · MIT License</p>
  </div>
+    </section>
 
- <!-- FORMULAS -->
+    </div>
+  </div>
+</div>
 
- <!-- TESTS -->
- 
+<script>
+// COPY FUNCTION
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  if (!pre) return;
+  const text = pre.innerText;
+  const iconCopy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  const iconDone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+  const done = () => {
+    btn.classList.add('copied');
+    btn.innerHTML = iconDone + 'Copié !';
+    setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = iconCopy + 'Copier'; }, 2000);
+  };
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(done).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); done();
+    });
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); done();
+  }
+}
 
- <!-- CONTRIB -->
+// TAB SWITCHING
+function showTab(id, el) {
+  document.querySelectorAll('.install-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// THEME TOGGLE
+function toggleTheme() {
+  const btn = document.getElementById('themeBtn');
+  document.body.classList.toggle('light');
+  btn.textContent = document.body.classList.contains('light') ? 'Mode sombre' : 'Mode clair';
+  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+}
+(function() {
+  if (localStorage.getItem('theme') === 'light') {
+    document.body.classList.add('light');
+    const btn = document.getElementById('themeBtn');
+    if (btn) btn.textContent = 'Mode sombre';
+  }
+})();
+
+// BACK TO TOP
+(function() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.innerHTML = '&#8679;';
+  btn.title = 'Retour en haut';
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(btn);
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+})();
+
+// SEARCH
+(function() {
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('searchResults');
+  if (!input || !results) return;
+
+  const index = [];
+  document.querySelectorAll('.method-card').forEach(card => {
+    const module = card.closest('section') ? card.closest('section').querySelector('.section-title') : null;
+    const name = card.querySelector('.method-name');
+    const desc = card.querySelector('.method-desc');
+    if (name) index.push({
+      el: card,
+      module: module ? module.textContent.trim() : '',
+      name: name.textContent.trim(),
+      desc: desc ? desc.textContent.trim() : ''
+    });
+  });
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    results.innerHTML = '';
+    if (!q) { results.style.display = 'none'; return; }
+    const hits = index.filter(i => i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q) || i.module.toLowerCase().includes(q)).slice(0, 10);
+    if (!hits.length) { results.style.display = 'none'; return; }
+    hits.forEach(h => {
+      const div = document.createElement('div');
+      div.className = 'search-result-item';
+      const highlight = t => t.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\]/g,'\$&'), 'gi'), m => '<mark>' + m + '</mark>');
+      div.innerHTML = '<span class="res-module">' + h.module + '</span><span class="res-name">' + highlight(h.name) + '</span>';
+      div.addEventListener('click', () => {
+        h.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        h.el.style.outline = '2px solid var(--accent)';
+        setTimeout(() => h.el.style.outline = '', 2000);
+        results.style.display = 'none';
+        input.value = '';
+      });
+      results.appendChild(div);
+    });
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', e => {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') results.style.display = 'none'; });
+})();
+
+// INTERSECTION OBSERVER (sidebar active state)
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.sidebar-nav a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+</body>
+</html>
