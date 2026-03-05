@@ -367,15 +367,15 @@
  <div class="install-tab" onclick="showTab('extras',this)">Extras</div>
  </div>
  <div id="tab-pip" class="install-panel active">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span></div><pre>pip install quantfinance</pre></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><pre>pip install quantfinance</pre></div>
  </div>
  <div id="tab-source" class="install-panel">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span></div><pre>git clone https://github.com/Mafoya1er/quantfinance.git
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><pre>git clone https://github.com/Mafoya1er/quantfinance.git
 cd quantfinance
 pip install -e .</pre></div>
  </div>
  <div id="tab-extras" class="install-panel">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span></div><pre>pip install quantfinance[data] <span class="cm"># Analyse de données</span>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><pre>pip install quantfinance[data] <span class="cm"># Analyse de données</span>
 pip install quantfinance[dev] <span class="cm"># Développement</span>
 pip install quantfinance[all] <span class="cm"># Tout installer</span></pre></div>
  </div>
@@ -384,7 +384,7 @@ pip install quantfinance[all] <span class="cm"># Tout installer</span></pre></di
  <!-- QUICKSTART -->
  <section id="quickstart">
  <h2 class="section-title">Démarrage rapide</h2>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>
 <span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
 <span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
@@ -433,7 +433,7 @@ var_95 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</
  <tr><td>sigma</td><td class="type">float</td><td>Volatilité annualisée</td></tr>
  <tr><td>option_type</td><td class="type">str</td><td>'call' ou 'put'</td></tr>
  </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>
 
 <span class="cm"># Option call européenne</span>
@@ -448,7 +448,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">price()</div><div class="method-return">→ float</div></div></div>
  <div class="method-body">
  <p class="method-desc">Calcule le prix théorique de l'option selon Black-Scholes.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>prix = bs_call.<span class="fn">price</span>()
 <span class="fn">print</span>(<span class="st">f"Prix de l'option: {prix:.2f}"</span>) <span class="cm"># ex: 10.45</span></pre></div>
  </div>
@@ -458,7 +458,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">delta()</div><div class="method-return">→ float · ∂V/∂S</div></div></div>
  <div class="method-body">
  <p class="method-desc">Sensibilité du prix au prix du sous-jacent. Entre 0 et 1 pour un call, entre -1 et 0 pour un put.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="fn">print</span>(<span class="st">f"Delta: {bs_call.delta():.4f}"</span>) <span class="cm"># ex: 0.4523</span>
 <span class="fn">print</span>(<span class="st">f"Delta put: {bs_put.delta():.4f}"</span>) <span class="cm"># ex: -0.3871</span></pre></div>
  </div>
@@ -468,7 +468,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">gamma()</div><div class="method-return">→ float · ∂²V/∂S²</div></div></div>
  <div class="method-body">
  <p class="method-desc">Convexité — taux de variation du delta par rapport au prix du sous-jacent. Toujours positif.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="fn">print</span>(<span class="st">f"Gamma: {bs_call.gamma():.6f}"</span>) <span class="cm"># ex: 0.018432</span></pre></div>
  </div>
  </div>
@@ -477,7 +477,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">vega()</div><div class="method-return">→ float · ∂V/∂σ</div></div></div>
  <div class="method-body">
  <p class="method-desc">Sensibilité du prix à la volatilité. Exprimé pour une variation de 1% de sigma.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="fn">print</span>(<span class="st">f"Vega: {bs_call.vega():.4f}"</span>) <span class="cm"># ex: 0.3841</span></pre></div>
  </div>
  </div>
@@ -486,7 +486,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">theta()</div><div class="method-return">→ float · ∂V/∂t</div></div></div>
  <div class="method-body">
  <p class="method-desc">Décroissance temporelle — perte de valeur par jour écoulé. Généralement négatif.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="fn">print</span>(<span class="st">f"Theta: {bs_call.theta():.4f}"</span>) <span class="cm"># ex: -0.0152 (perte de 1.52 cts/jour)</span></pre></div>
  </div>
  </div>
@@ -495,7 +495,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <div class="method-header"><div><div class="method-signature">rho()</div><div class="method-return">→ float · ∂V/∂r</div></div></div>
  <div class="method-body">
  <p class="method-desc">Sensibilité au taux sans risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="fn">print</span>(<span class="st">f"Rho: {bs_call.rho():.4f}"</span>) <span class="cm"># ex: 0.2910</span></pre></div>
  </div>
  </div>
@@ -508,7 +508,7 @@ bs_put = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<
  <tr><th>Paramètre</th><th>Type</th><th>Description</th></tr>
  <tr><td>market_price</td><td class="type">float</td><td>Prix de marché observé de l'option</td></tr>
  </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>market_price = <span class="nb">8.50</span>
 implied_vol = bs_call.<span class="fn">implied_volatility</span>(market_price)
 <span class="fn">print</span>(<span class="st">f"Volatilité implicite: {implied_vol:.2%}"</span>) <span class="cm"># ex: 21.34%</span></pre></div>
@@ -530,7 +530,7 @@ implied_vol = bs_call.<span class="fn">implied_volatility</span>(market_price)
  <tr><td>n_steps</td><td class="type">int</td><td>Nombre de pas dans l'arbre (défaut : 100)</td></tr>
  <tr><td>american</td><td class="type">bool</td><td>True pour activer l'exercice anticipé</td></tr>
  </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BinomialTree</span>
 
 <span class="cm"># Option américaine put (exercice anticipé possible)</span>
@@ -554,7 +554,7 @@ bt_eu = <span class="cl">BinomialTree</span>(S=<span class="nb">100</span>, K=<s
  <div class="method-header"><div><div class="method-signature">price()</div><div class="method-return">→ float</div></div></div>
  <div class="method-body">
  <p class="method-desc">Prix standard par simulation de trajectoires du sous-jacent.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">MonteCarlo</span>
 
 mc = <span class="cl">MonteCarlo</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>, n_simulations=<span class="nb">50000</span>)
@@ -565,7 +565,7 @@ mc = <span class="cl">MonteCarlo</span>(S=<span class="nb">100</span>, K=<span c
  <div class="method-header"><div><div class="method-signature">asian_price(averaging='arithmetic')</div><div class="method-return">→ float</div></div></div>
  <div class="method-body">
  <p class="method-desc">Prix d'une option asiatique basé sur la moyenne du sous-jacent sur la durée de vie.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># Moyenne arithmétique (standard)</span>
 prix_asiatique = mc.<span class="fn">asian_price</span>(averaging=<span class="st">'arithmetic'</span>)
 <span class="fn">print</span>(<span class="st">f"Option asiatique: {prix_asiatique:.2f}"</span>)
@@ -586,7 +586,7 @@ prix_geo = mc.<span class="fn">asian_price</span>(averaging=<span class="st">'ge
  <tr><td>'down-out'</td><td class="type">str</td><td>L'option disparaît si S tombe sous la barrière</td></tr>
  <tr><td>'down-in'</td><td class="type">str</td><td>L'option s'active si S tombe sous la barrière</td></tr>
  </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>prix_barriere = mc.<span class="fn">barrier_price</span>(barrier=<span class="nb">120</span>, barrier_type=<span class="st">'up-out'</span>)
 <span class="fn">print</span>(<span class="st">f"Option à barrière up-out: {prix_barriere:.2f}"</span>)</pre></div>
  </div>
@@ -601,7 +601,7 @@ prix_geo = mc.<span class="fn">asian_price</span>(averaging=<span class="st">'ge
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(face_value, coupon_rate, maturity, frequency=2)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.bonds <span class="kw">import</span><span class="cl">Bond</span>
 
 <span class="cm"># Obligation 1000€, coupon 5%, maturité 10 ans, semi-annuel</span>
@@ -611,7 +611,7 @@ bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, cou
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">price(ytm)</div><div class="method-return">→ float</div></div></div>
  <div class="method-body"><p class="method-desc">Prix théorique de l'obligation pour un taux de rendement donné.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>prix = bond.<span class="fn">price</span>(ytm=<span class="nb">0.04</span>)
 <span class="fn">print</span>(<span class="st">f"Prix: {prix:.2f}€"</span>) <span class="cm"># > 1000 car YTM < coupon</span></pre></div>
  </div>
@@ -619,7 +619,7 @@ bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, cou
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">ytm(market_price)</div><div class="method-return">→ float</div></div></div>
  <div class="method-body"><p class="method-desc">Yield to Maturity — rendement actuariel jusqu'à maturité.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>ytm = bond.<span class="fn">ytm</span>(market_price=<span class="nb">980</span>)
 <span class="fn">print</span>(<span class="st">f"YTM: {ytm:.2%}"</span>) <span class="cm"># ex: 5.24%</span></pre></div>
  </div>
@@ -627,7 +627,7 @@ bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, cou
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">duration(ytm) / modified_duration(ytm) / convexity(ytm)</div><div class="method-return">→ float</div></div></div>
  <div class="method-body"><p class="method-desc">Mesures de sensibilité aux taux d'intérêt.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>ytm = <span class="nb">0.045</span>
 <span class="fn">print</span>(<span class="st">f"Duration Macaulay: {bond.duration(ytm):.2f} ans"</span>)
 <span class="fn">print</span>(<span class="st">f"Duration modifiée: {bond.modified_duration(ytm):.2f}"</span>)
@@ -653,7 +653,7 @@ bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, cou
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">historical_var(returns, confidence)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">VaR historique non paramétrique — quantile empirique des pertes observées.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
 
 var_95 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</span>(returns, confidence=<span class="nb">0.95</span>)
@@ -666,7 +666,7 @@ var_99 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">parametric_var(returns, confidence)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">VaR paramétrique sous hypothèse de normalité des rendements.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>var_param = <span class="cl">VaRCalculator</span>.<span class="fn">parametric_var</span>(returns, confidence=<span class="nb">0.95</span>)
 <span class="fn">print</span>(<span class="st">f"VaR paramétrique 95%: {var_param:.2%}"</span>)</pre></div>
  </div>
@@ -675,7 +675,7 @@ var_99 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">ewma_var(returns, confidence, lambda_=0.94)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">VaR avec pondération exponentielle — donne plus de poids aux observations récentes (modèle RiskMetrics).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># lambda_ = 0.94 est le standard RiskMetrics pour données journalières</span>
 var_ewma = <span class="cl">VaRCalculator</span>.<span class="fn">ewma_var</span>(returns, confidence=<span class="nb">0.95</span>, lambda_=<span class="nb">0.94</span>)
 <span class="fn">print</span>(<span class="st">f"VaR EWMA 95%: {var_ewma:.2%}"</span>)</pre></div>
@@ -685,7 +685,7 @@ var_ewma = <span class="cl">VaRCalculator</span>.<span class="fn">ewma_var</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">monte_carlo_var(returns, confidence, n_sim=10000)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">VaR par simulation Monte Carlo de trajectoires futures.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>var_mc = <span class="cl">VaRCalculator</span>.<span class="fn">monte_carlo_var</span>(returns, confidence=<span class="nb">0.95</span>, n_sim=<span class="nb">100000</span>)
 <span class="fn">print</span>(<span class="st">f"VaR Monte Carlo 95%: {var_mc:.2%}"</span>)</pre></div>
  </div>
@@ -694,7 +694,7 @@ var_ewma = <span class="cl">VaRCalculator</span>.<span class="fn">ewma_var</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">expected_shortfall(returns, confidence)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">CVaR / Expected Shortfall — perte moyenne dans les scénarios pires que la VaR. Mesure cohérente du risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>es_95 = <span class="cl">VaRCalculator</span>.<span class="fn">expected_shortfall</span>(returns, confidence=<span class="nb">0.95</span>)
 <span class="fn">print</span>(<span class="st">f"CVaR 95%: {es_95:.2%}"</span>) <span class="cm"># toujours >= VaR</span>
 
@@ -718,7 +718,7 @@ var_ewma = <span class="cl">VaRCalculator</span>.<span class="fn">ewma_var</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">sharpe_ratio(returns, rf=0.0)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Ratio rendement/risque annualisé. Mesure le rendement excédentaire par unité de volatilité totale.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span><span class="cl">RiskMetrics</span>
 
 sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span>(returns, rf=<span class="nb">0.02</span>)
@@ -728,7 +728,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">sortino_ratio(returns, rf=0.0)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Comme Sharpe mais ne pénalise que la volatilité négative (downside deviation).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>sortino = <span class="cl">RiskMetrics</span>.<span class="fn">sortino_ratio</span>(returns, rf=<span class="nb">0.02</span>)
 <span class="fn">print</span>(<span class="st">f"Sortino: {sortino:.3f}"</span>)</pre></div>
  </div>
@@ -736,7 +736,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">calmar_ratio(returns)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Rendement annualisé divisé par le drawdown maximum. Mesure la récupération après perte.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>calmar = <span class="cl">RiskMetrics</span>.<span class="fn">calmar_ratio</span>(returns)
 <span class="fn">print</span>(<span class="st">f"Calmar: {calmar:.3f}"</span>)</pre></div>
  </div>
@@ -744,7 +744,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">max_drawdown(returns)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Perte maximale depuis un pic précédent, exprimée en pourcentage.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>mdd = <span class="cl">RiskMetrics</span>.<span class="fn">max_drawdown</span>(returns)
 <span class="fn">print</span>(<span class="st">f"Max Drawdown: {mdd:.2%}"</span>) <span class="cm"># ex: -23.45%</span></pre></div>
  </div>
@@ -752,7 +752,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">information_ratio(returns, benchmark)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Alpha annualisé divisé par le tracking error — mesure la valeur ajoutée par rapport à un benchmark.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>ir = <span class="cl">RiskMetrics</span>.<span class="fn">information_ratio</span>(portfolio_returns, benchmark_returns)
 <span class="fn">print</span>(<span class="st">f"Information Ratio: {ir:.3f}"</span>)</pre></div>
  </div>
@@ -767,7 +767,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span><span class="cl">PerformanceAnalyzer</span>
 
 analyzer = <span class="cl">PerformanceAnalyzer</span>(returns, risk_free_rate=<span class="nb">0.02</span>)</pre></div>
@@ -776,7 +776,7 @@ analyzer = <span class="cl">PerformanceAnalyzer</span>(returns, risk_free_rate=<
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">summary_statistics()</div><div class="method-return">→ pd.DataFrame</div></div></div>
  <div class="method-body"><p class="method-desc">Tableau complet de toutes les métriques de performance et de risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>summary = analyzer.<span class="fn">summary_statistics</span>()
 <span class="fn">print</span>(summary)
 <span class="cm"># Rendement annualisé : 12.34%</span>
@@ -790,7 +790,7 @@ analyzer = <span class="cl">PerformanceAnalyzer</span>(returns, risk_free_rate=<
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">rolling_metrics(window=252)</div><div class="method-return">→ pd.DataFrame</div></div></div>
  <div class="method-body"><p class="method-desc">Métriques calculées sur une fenêtre glissante — utile pour suivre l'évolution dans le temps.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># Fenêtre de 252 jours (1 an)</span>
 rolling = analyzer.<span class="fn">rolling_metrics</span>(window=<span class="nb">252</span>)
 <span class="fn">print</span>(rolling[[<span class="st">'sharpe'</span>, <span class="st">'volatility'</span>]].<span class="fn">tail</span>())</pre></div>
@@ -799,7 +799,7 @@ rolling = analyzer.<span class="fn">rolling_metrics</span>(window=<span class="n
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">plot_performance()</div><div class="method-return">→ Figure</div></div></div>
  <div class="method-body"><p class="method-desc">Graphique de la performance cumulée et des drawdowns.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
 fig = analyzer.<span class="fn">plot_performance</span>()
 plt.<span class="fn">show</span>()</pre></div>
@@ -815,7 +815,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">historical_scenarios(returns)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Applique des scénarios de crises historiques (2008, COVID-19, etc.) au portefeuille.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.risk.stress <span class="kw">import</span><span class="cl">StressTesting</span>
 
 results = <span class="cl">StressTesting</span>.<span class="fn">historical_scenarios</span>(returns)
@@ -828,7 +828,7 @@ results = <span class="cl">StressTesting</span>.<span class="fn">historical_scen
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">custom_scenario(returns, shocks)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Applique des chocs personnalisés sur les facteurs de risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># Scénario : choc de -30% sur les actions, +200bps sur les taux</span>
 shocks = {<span class="st">'equity'</span>: <span class="op">-</span><span class="nb">0.30</span>, <span class="st">'rates'</span>: <span class="nb">0.02</span>}
 pnl = <span class="cl">StressTesting</span>.<span class="fn">custom_scenario</span>(returns, shocks)
@@ -853,7 +853,7 @@ pnl = <span class="cl">StressTesting</span>.<span class="fn">custom_scenario</sp
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
  <div class="method-body"><p class="method-desc">Initialise l'optimiseur avec les rendements historiques et le taux sans risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
 
 optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
@@ -862,7 +862,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">equal_weight()</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Crée un portefeuille équipondéré (poids égaux pour chaque actif).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>result = optimizer.<span class="fn">equal_weight</span>()
 <span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])
 <span class="fn">print</span>(<span class="st">"Rendement:"</span>, result[<span class="st">'return'</span>])</pre></div>
@@ -871,7 +871,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">minimize_volatility(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Minimise la volatilité du portefeuille — portefeuille à variance minimale.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>result = optimizer.<span class="fn">minimize_volatility</span>()
 <span class="fn">print</span>(<span class="st">f"Volatilité minimale: {result['volatility']:.2%}"</span>)
 <span class="fn">print</span>(<span class="st">f"Rendement associé: {result['return']:.2%}"</span>)
@@ -881,7 +881,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">maximize_sharpe(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Maximise le ratio de Sharpe — point tangent de la frontière efficiente.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>result = optimizer.<span class="fn">maximize_sharpe</span>()
 <span class="fn">print</span>(<span class="st">f"Sharpe max: {result['sharpe_ratio']:.3f}"</span>)
 <span class="fn">print</span>(<span class="st">f"Rendement: {result['return']:.2%}"</span>)
@@ -891,7 +891,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">maximize_return(target_volatility)</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Maximise le rendement sous contrainte de volatilité cible.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>result = optimizer.<span class="fn">maximize_return</span>(target_volatility=<span class="nb">0.18</span>)
 <span class="fn">print</span>(<span class="st">f"Rendement max (vol=18%): {result['return']:.2%}"</span>)</pre></div>
  </div>
@@ -899,7 +899,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">risk_parity()</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Portefeuille de parité de risque — chaque actif contribue également au risque total.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>result = optimizer.<span class="fn">risk_parity</span>()
 <span class="fn">print</span>(<span class="st">"Contribution au risque:"</span>, result[<span class="st">'risk_contribution'</span>])
 <span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])</pre></div>
@@ -915,7 +915,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(optimizer)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">EfficientFrontier</span>
 
 frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
@@ -924,7 +924,7 @@ frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">calculate_frontier(n_points=50, min_return=None, max_return=None)</div><div class="method-return">→ pd.DataFrame</div></div></div>
  <div class="method-body"><p class="method-desc">Calcule les portefeuilles optimaux sur la frontière efficiente.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>frontier_data = frontier.<span class="fn">calculate_frontier</span>(n_points=<span class="nb">50</span>)
 <span class="fn">print</span>(frontier_data.<span class="fn">head</span>())
 <span class="cm"># columns: return, volatility, sharpe_ratio, weights...</span></pre></div>
@@ -933,7 +933,7 @@ frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">plot(show_assets=True, show_optimal=True, figsize=(12,8))</div><div class="method-return">→ Figure</div></div></div>
  <div class="method-body"><p class="method-desc">Trace la frontière efficiente avec les actifs individuels et le portefeuille optimal.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
 
 fig = frontier.<span class="fn">plot</span>(show_assets=<span class="kw">True</span>, show_optimal=<span class="kw">True</span>)
@@ -950,7 +950,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(returns)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">AssetAllocator</span>
 
 allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
@@ -959,7 +959,7 @@ allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">hierarchical_risk_parity()</div><div class="method-return">→ pd.Series</div></div></div>
  <div class="method-body"><p class="method-desc">Allocation HRP — utilise la hiérarchie des corrélations pour diversifier sans inversion de matrice.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>weights = allocator.<span class="fn">hierarchical_risk_parity</span>()
 <span class="fn">print</span>(<span class="st">"Poids HRP:"</span>, weights)</pre></div>
  </div>
@@ -967,7 +967,7 @@ allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">minimum_correlation()</div><div class="method-return">→ pd.Series</div></div></div>
  <div class="method-body"><p class="method-desc">Minimise la corrélation moyenne entre les actifs du portefeuille.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>weights = allocator.<span class="fn">minimum_correlation</span>()
 <span class="fn">print</span>(<span class="st">"Poids min corr:"</span>, weights)</pre></div>
  </div>
@@ -975,7 +975,7 @@ allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">maximum_diversification()</div><div class="method-return">→ pd.Series</div></div></div>
  <div class="method-body"><p class="method-desc">Maximise le ratio de diversification — rapport volatilité pondérée / volatilité portefeuille.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>weights = allocator.<span class="fn">maximum_diversification</span>()
 <span class="fn">print</span>(<span class="st">"Poids max div:"</span>, weights)</pre></div>
  </div>
@@ -990,7 +990,7 @@ allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(target_weights, prices, initial_capital=100000.0, transaction_cost=0.001)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span><span class="cl">Rebalancer</span>
 
 rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
@@ -1000,7 +1000,7 @@ rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">periodic_rebalancing(frequency='monthly')</div><div class="method-return">→ pd.DataFrame</div></div></div>
  <div class="method-body"><p class="method-desc">Rééquilibre le portefeuille à intervalles fixes. Fréquences : 'daily', 'weekly', 'monthly', 'quarterly', 'yearly'.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>results = rebalancer.<span class="fn">periodic_rebalancing</span>(frequency=<span class="st">'quarterly'</span>)
 <span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
  </div>
@@ -1008,7 +1008,7 @@ rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">threshold_rebalancing(threshold=0.05)</div><div class="method-return">→ pd.DataFrame</div></div></div>
  <div class="method-body"><p class="method-desc">Rééquilibre uniquement quand un poids dévie de plus de <code>threshold</code> par rapport à la cible.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># Rééquilibre si déviation > 3%</span>
 results = rebalancer.<span class="fn">threshold_rebalancing</span>(threshold=<span class="nb">0.03</span>)
 <span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
@@ -1024,7 +1024,7 @@ results = rebalancer.<span class="fn">threshold_rebalancing</span>(threshold=<sp
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">__init__(data, strategy, initial_capital=10000.0, commission=0.001)</div></div></div>
  <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>
 
 strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">20</span>, long_window=<span class="nb">50</span>)
@@ -1035,7 +1035,7 @@ backtester = <span class="cl">Backtester</span>(prices_df, strategy,
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">run() / run_backtest()</div><div class="method-return">→ Dict</div></div></div>
  <div class="method-body"><p class="method-desc">Exécute le backtest et retourne les métriques de performance.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>results = backtester.<span class="fn">run</span>()
 <span class="fn">print</span>(<span class="st">f"Rendement total: {results['Total Return']:.2%}"</span>)
 <span class="fn">print</span>(<span class="st">f"Ratio de Sharpe: {results['Sharpe Ratio']:.3f}"</span>)
@@ -1046,7 +1046,7 @@ backtester = <span class="cl">Backtester</span>(prices_df, strategy,
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">plot_results(figsize=(14,10))</div><div class="method-return">→ Figure</div></div></div>
  <div class="method-body"><p class="method-desc">Trace la courbe de capital, les signaux de trading et les drawdowns.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
 fig = backtester.<span class="fn">plot_results</span>()
 plt.<span class="fn">show</span>()</pre></div>
@@ -1062,7 +1062,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">BuyAndHoldStrategy</div><div class="method-return">Stratégie passive</div></div></div>
  <div class="method-body"><p class="method-desc">Achète au début et conserve jusqu'à la fin. Sert de benchmark de référence.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">BuyAndHoldStrategy</span>
 
 strategy = <span class="cl">BuyAndHoldStrategy</span>()
@@ -1073,7 +1073,7 @@ signals = strategy.<span class="fn">generate_signals</span>(prices_df)
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">MovingAverageCrossover(short_window=20, long_window=50)</div><div class="method-return">Stratégie de tendance</div></div></div>
  <div class="method-body"><p class="method-desc">Signal d'achat quand la MA courte croise la MA longue à la hausse, et de vente à la baisse.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">MovingAverageCrossover</span>
 
 strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">10</span>, long_window=<span class="nb">30</span>)
@@ -1104,7 +1104,7 @@ results = bt.<span class="fn">run</span>()
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">load_csv(path)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Charge un fichier CSV local de prix ou de rendements.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
 
 prices = <span class="cl">DataLoader</span>.<span class="fn">load_csv</span>(<span class="st">'data/prices.csv'</span>)
@@ -1114,7 +1114,7 @@ prices = <span class="cl">DataLoader</span>.<span class="fn">load_csv</span>(<sp
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">load_yahoo(tickers, start, end)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Télécharge les données historiques depuis Yahoo Finance.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>prices = <span class="cl">DataLoader</span>.<span class="fn">load_yahoo</span>(
  tickers=[<span class="st">'AAPL'</span>, <span class="st">'MSFT'</span>, <span class="st">'GOOGL'</span>, <span class="st">'AMZN'</span>],
  start=<span class="st">'2020-01-01'</span>,
@@ -1127,7 +1127,7 @@ returns = prices.<span class="fn">pct_change</span>().<span class="fn">dropna</s
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">generate_synthetic_prices(n_assets, n_days)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Génère des prix synthétiques par mouvement brownien géométrique (GBM).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="cm"># 5 actifs sur 3 ans de données journalières</span>
 prices = <span class="cl">DataLoader</span>.<span class="fn">generate_synthetic_prices</span>(n_assets=<span class="nb">5</span>, n_days=<span class="nb">252</span><span class="op">*</span><span class="nb">3</span>)
 returns = prices.<span class="fn">pct_change</span>().<span class="fn">dropna</span>()</pre></div>
@@ -1136,7 +1136,7 @@ returns = prices.<span class="fn">pct_change</span>().<span class="fn">dropna</s
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">generate_ohlcv_data(n_days)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Génère des données OHLCV (Open, High, Low, Close, Volume) pour le backtesting.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>data = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">500</span>)
 <span class="fn">print</span>(data.columns.tolist())
 <span class="cm"># ['Open', 'High', 'Low', 'Close', 'Volume']</span></pre></div>
@@ -1145,7 +1145,7 @@ returns = prices.<span class="fn">pct_change</span>().<span class="fn">dropna</s
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">clean_data(df)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Nettoie les données financières : valeurs manquantes, outliers, données incohérentes.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>raw_data = <span class="cl">DataLoader</span>.<span class="fn">load_csv</span>(<span class="st">'data/raw_prices.csv'</span>)
 clean = <span class="cl">DataLoader</span>.<span class="fn">clean_data</span>(raw_data)
 <span class="fn">print</span>(<span class="st">f"Lignes supprimées: {len(raw_data) - len(clean)}"</span>)</pre></div>
@@ -1161,7 +1161,7 @@ clean = <span class="cl">DataLoader</span>.<span class="fn">clean_data</span>(ra
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">sma(prices, window) / ema(prices, window)</div><div class="method-return">→ pd.Series · Méthodes statiques</div></div></div>
  <div class="method-body"><p class="method-desc">Moyennes mobiles simple (SMA) et exponentielle (EMA).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span><span class="cl">TechnicalIndicators</span>
 
 close = prices[<span class="st">'Close'</span>]
@@ -1175,7 +1175,7 @@ signal = (sma_20 <span class="op">></span> ema_50).<span class="fn">astype</span
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">rsi(prices, window=14)</div><div class="method-return">→ pd.Series · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Relative Strength Index — oscillateur entre 0 et 100. Suracheté > 70, survendu &lt; 30.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>rsi = <span class="cl">TechnicalIndicators</span>.<span class="fn">rsi</span>(close, window=<span class="nb">14</span>)
 <span class="fn">print</span>(<span class="st">f"RSI actuel: {rsi.iloc[-1]:.1f}"</span>)
 survendu = rsi[rsi <span class="op">&lt;</span><span class="nb">30</span>]
@@ -1185,7 +1185,7 @@ surachete = rsi[rsi <span class="op">></span><span class="nb">70</span>]</pre></
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">macd(prices)</div><div class="method-return">→ Dict · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">MACD (12,26,9) — retourne la ligne MACD, la ligne signal et l'histogramme.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>macd = <span class="cl">TechnicalIndicators</span>.<span class="fn">macd</span>(close)
 <span class="fn">print</span>(macd[<span class="st">'macd'</span>].<span class="fn">tail</span>())
 <span class="fn">print</span>(macd[<span class="st">'signal'</span>].<span class="fn">tail</span>())
@@ -1195,7 +1195,7 @@ surachete = rsi[rsi <span class="op">></span><span class="nb">70</span>]</pre></
  <div class="method-card">
  <div class="method-header"><div><div class="method-signature">bollinger_bands(prices, window=20)</div><div class="method-return">→ Dict · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Bandes de Bollinger (±2 écarts-types autour de la SMA).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre>bands = <span class="cl">TechnicalIndicators</span>.<span class="fn">bollinger_bands</span>(close, window=<span class="nb">20</span>)
 <span class="fn">print</span>(<span class="st">f"Bande haute: {bands['upper'].iloc[-1]:.2f}"</span>)
 <span class="fn">print</span>(<span class="st">f"Bande centrale: {bands['middle'].iloc[-1]:.2f}"</span>)
@@ -1206,46 +1206,7 @@ surachete = rsi[rsi <span class="op">></span><span class="nb">70</span>]</pre></
  </div>
  </section>
 
- <!-- TESTS -->
- <section id="tests">
- <h2 class="section-title">Tests</h2>
- <div class="code-block"><div class="code-header"><div class="code-dot red"><button class="copy-btn" onclick="copyCode(this)" title="Copier le code"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span></div>
-<pre><span class="cm"># Tous les tests</span>
-pytest
-
-<span class="cm"># Avec rapport de couverture HTML</span>
-pytest --cov=quantfinance --cov-report=html
-
-<span class="cm"># Tests rapides uniquement</span>
-pytest -m <span class="st">"not slow"</span>
-
-<span class="cm"># Un module spécifique</span>
-pytest tests/test_pricing.py -v</pre></div>
- </section>
-
- <!-- CONTRIB -->
- <section id="contrib">
- <h2 class="section-title">Guide de contribution</h2>
- <ol class="steps">
- <li>Fork le dépôt sur GitHub</li>
- <li>Créez une branche : <code>git checkout -b feature/ma-fonctionnalite</code></li>
- <li>Implémentez avec des tests unitaires</li>
- <li>Committez : <code>git commit -m 'feat: description'</code></li>
- <li>Pushez : <code>git push origin feature/ma-fonctionnalite</code></li>
- <li>Ouvrez une Pull Request sur GitHub</li>
- </ol>
- <div style="margin-top:36px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-align:center;">
- <p style="font-size:14px;color:var(--muted);margin-bottom:6px;">Auteur : <strong style="color:var(--text)">Marcel ALOEKPO</strong></p>
- <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1dcd0c3d2d4ddd0ddded4dac1def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></p>
- <div style="display:flex;gap:12px;justify-content:center;">
- <a href="https://github.com/Mafoya1er/quantfinance" class="btn btn-ghost" target="_blank">GitHub</a>
- <a href="https://pypi.org/project/quantfinance/" class="btn btn-primary" target="_blank">PyPI</a>
- </div>
- <p style="margin-top:18px;font-size:12px;color:var(--border);">Made with for quantitative finance · MIT License</p>
- </div>
-
- <!-- FORMULAS -->
- <section id="formulas">
+      <section id="formulas">
  <h2 class="section-title"> Formules mathématiques</h2>
  <p>Les équations fondamentales implémentées dans QuantFinance.</p>
 
@@ -1311,8 +1272,7 @@ pytest tests/test_pricing.py -v</pre></div>
  </div>
  </section>
 
- <!-- COMPARISON -->
- <section id="comparison">
+      <section id="comparison">
  <h2 class="section-title"> Comparaison des méthodes</h2>
 
  <h3 class="sub-title">Pricing d'options</h3>
@@ -1358,8 +1318,7 @@ pytest tests/test_pricing.py -v</pre></div>
  </table>
  </section>
 
- <!-- EXAMPLES -->
- <section id="examples">
+      <section id="examples">
  <h2 class="section-title"> Exemples complets</h2>
  <p>Des workflows de bout en bout combinant plusieurs modules.</p>
 
@@ -1372,7 +1331,7 @@ pytest tests/test_pricing.py -v</pre></div>
  </div>
  </div>
  <div class="example-card-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>, <span class="cl">BinomialTree</span>, <span class="cl">MonteCarlo</span>
 
 <span class="cm"># Paramètres communs</span>
@@ -1418,7 +1377,7 @@ Vol. implicite: {impl_vol:.2%}"</span>)
  </div>
  </div>
  <div class="example-card-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
 <span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>, <span class="cl">EfficientFrontier</span>
 <span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
@@ -1467,7 +1426,7 @@ analyzer = <span class="cl">PerformanceAnalyzer</span>(port_ret, risk_free_rate=
  </div>
  </div>
  <div class="example-card-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
 <span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span><span class="cl">TechnicalIndicators</span>
 <span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>, <span class="cl">BuyAndHoldStrategy</span>
@@ -1508,7 +1467,7 @@ res = bh.<span class="fn">run</span>()
  </div>
  </div>
  <div class="example-card-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
 <pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
 <span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
 <span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span><span class="cl">Rebalancer</span>
@@ -1544,151 +1503,45 @@ Rééquilibrage mensuel — transactions: {len(res_monthly)}"</span>)
  </div>
  </section>
 
+      <section id="tests">
+ <h2 class="section-title">Tests</h2>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">bash</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="cm"># Tous les tests</span>
+pytest
+
+<span class="cm"># Avec rapport de couverture HTML</span>
+pytest --cov=quantfinance --cov-report=html
+
+<span class="cm"># Tests rapides uniquement</span>
+pytest -m <span class="st">"not slow"</span>
+
+<span class="cm"># Un module spécifique</span>
+pytest tests/test_pricing.py -v</pre></div>
  </section>
 
+      <section id="contrib">
+ <h2 class="section-title">Guide de contribution</h2>
+ <ol class="steps">
+ <li>Fork le dépôt sur GitHub</li>
+ <li>Créez une branche : <code>git checkout -b feature/ma-fonctionnalite</code></li>
+ <li>Implémentez avec des tests unitaires</li>
+ <li>Committez : <code>git commit -m 'feat: description'</code></li>
+ <li>Pushez : <code>git push origin feature/ma-fonctionnalite</code></li>
+ <li>Ouvrez une Pull Request sur GitHub</li>
+ </ol>
+ <div style="margin-top:36px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:8px;text-align:center;">
+ <p style="font-size:14px;color:var(--muted);margin-bottom:6px;">Auteur : <strong style="color:var(--text)">Marcel ALOEKPO</strong></p>
+ <p style="font-size:13px;color:var(--muted);margin-bottom:16px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1dcd0c3d2d4ddd0ddded4dac1def1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></p>
+ <div style="display:flex;gap:12px;justify-content:center;">
+ <a href="https://github.com/Mafoya1er/quantfinance" class="btn btn-ghost" target="_blank">GitHub</a>
+ <a href="https://pypi.org/project/quantfinance/" class="btn btn-primary" target="_blank">PyPI</a>
  </div>
+ <p style="margin-top:18px;font-size:12px;color:var(--border);">Made with for quantitative finance · MIT License</p>
  </div>
-</div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+ <!-- FORMULAS -->
 
-</script><script>
+ <!-- TESTS -->
+ 
 
-// COPY FUNCTION (static buttons in HTML)
-function copyCode(btn) {
- const pre = btn.closest('.code-block').querySelector('pre');
- if (!pre) return;
- const text = pre.innerText;
- const iconCopy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
- const iconDone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
- const done = () => {
- btn.classList.add('copied');
- btn.innerHTML = iconDone + 'Copié !';
- setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = iconCopy + 'Copier'; }, 2000);
- };
- if (navigator.clipboard) {
- navigator.clipboard.writeText(text).then(done).catch(() => {
- const ta = document.createElement('textarea');
- ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
- document.body.appendChild(ta); ta.select();
- document.execCommand('copy'); document.body.removeChild(ta); done();
- });
- } else {
- const ta = document.createElement('textarea');
- ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
- document.body.appendChild(ta); ta.select();
- document.execCommand('copy'); document.body.removeChild(ta); done();
- }
-}
-
-function showTab(id, el) {
- document.querySelectorAll('.install-panel').forEach(p => p.classList.remove('active'));
- document.querySelectorAll('.install-tab').forEach(t => t.classList.remove('active'));
- document.getElementById('tab-' + id).classList.add('active');
- el.classList.add('active');
-}
-
-// Active sidebar on scroll
-const allSections = document.querySelectorAll('section[id], .class-card[id]');
-const sidebarLinks = document.querySelectorAll('.sidebar a[href^="#"]');
-
-const obs = new IntersectionObserver((entries) => {
- entries.forEach(e => {
- if (e.isIntersecting) {
- sidebarLinks.forEach(l => l.classList.remove('active'));
- const lnk = document.querySelector(`.sidebar a[href="#${e.target.id}"]`);
- if (lnk) lnk.classList.add('active');
- }
- });
-}, { threshold: 0.2, rootMargin: '-60px 0px -55% 0px' });
-
-allSections.forEach(s => obs.observe(s));
-
-
-// THEME TOGGLE 
-function toggleTheme() {
- const body = document.body;
- const btn = document.getElementById('themeBtn');
- body.classList.toggle('light');
- if (body.classList.contains('light')) {
- btn.textContent = ' Sombre';
- localStorage.setItem('theme', 'light');
- } else {
- btn.textContent = ' Clair';
- localStorage.setItem('theme', 'dark');
- }
-}
-// Restore theme
-if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light'); document.getElementById('themeBtn').textContent = ' Sombre'; }
-
-// BACK TO TOP 
-const btt = document.createElement('button');
-btt.className = 'back-to-top';
-btt.innerHTML = '↑';
-btt.title = 'Retour en haut';
-btt.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
-document.body.appendChild(btt);
-window.addEventListener('scroll', () => {
- btt.classList.toggle('visible', window.scrollY > 400);
-});
-
-// SEARCH 
-const searchIndex = [];
-document.querySelectorAll('.method-card').forEach(card => {
- const sig = card.querySelector('.method-signature');
- const ret = card.querySelector('.method-return');
- const section = card.closest('section, .class-card');
- const module = card.closest('.class-card') ? card.closest('.class-card').querySelector('.class-name') : null;
- if (!sig) return;
- const anchor = card.closest('[id]');
- searchIndex.push({
- name: sig.textContent.trim(),
- ret: ret ? ret.textContent.trim() : '',
- module: module ? module.textContent.trim() : '',
- anchor: anchor ? '#' + anchor.id : '#',
- el: card
- });
-});
-
-const input = document.getElementById('searchInput');
-const results = document.getElementById('searchResults');
-
-input.addEventListener('input', () => {
- const q = input.value.trim().toLowerCase();
- results.innerHTML = '';
- if (!q) { results.classList.remove('open'); return; }
- const matches = searchIndex.filter(i => i.name.toLowerCase().includes(q) || i.module.toLowerCase().includes(q));
- if (!matches.length) {
- results.innerHTML = '<div class="no-results">Aucun résultat pour "' + q + '"</div>';
- results.classList.add('open');
- return;
- }
- matches.slice(0, 8).forEach(m => {
- const div = document.createElement('div');
- div.className = 'search-result-item';
- const highlighted = m.name.replace(new RegExp(q, 'gi'), match => '<mark>' + match + '</mark>');
- div.innerHTML = '<div class="res-module">' + m.module + '</div><div class="res-name">' + highlighted + '</div>';
- div.onclick = () => {
- results.classList.remove('open');
- input.value = '';
- m.el.scrollIntoView({behavior:'smooth', block:'center'});
- m.el.style.outline = '2px solid var(--cyan)';
- setTimeout(() => { m.el.style.outline = ''; }, 2000);
- };
- results.appendChild(div);
- });
- results.classList.add('open');
-});
-
-document.addEventListener('click', e => {
- if (!e.target.closest('.search-wrap')) results.classList.remove('open');
-});
-input.addEventListener('keydown', e => {
- if (e.key === 'Escape') { results.classList.remove('open'); input.value = ''; }
-});
-
-
-
-</script>
-</body>
-</html>
+ <!-- CONTRIB -->
