@@ -24,6 +24,9 @@ setup.py
 ./quantfinance/utils/helpers.py
 ./quantfinance/utils/plotting.py
 .github/workflows/deploy.yml
+dist/quantfinance-0.1.3-py3-none-any.whl
+dist/quantfinance-0.1.3.tar.gz
+docs/.nojekyll
 docs/Makefile
 docs/conf.py
 docs/index.html
@@ -35,6 +38,7 @@ docs/pricing.md
 docs/requirements.txt
 docs/risk.md
 docs/utils.md
+docs/_redirect/index.html
 docs/_static/custom.css
 docs/user_guide/installation.rst
 docs/user_guide/quickstart.rst
