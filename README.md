@@ -5,12 +5,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/Mafoya1er/quantfinance/workflows/CI/badge.svg)](https://github.com/Mafoya1er/quantfinance/actions)
 [![codecov](https://codecov.io/gh/Mafoya1er/quantfinance/branch/main/graph/badge.svg)](https://codecov.io/gh/Mafoya1er/quantfinance)
-[![Documentation Status](https://readthedocs.org/projects/quantfinance/badge/?version=latest)](https://quantfinance.readthedocs.io/en/latest/?badge=latest)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://mafoya1er.github.io/quantfinance/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 > Package Python professionnel pour la finance quantitative
 
-[Documentation](https://quantfinance.readthedocs.io) | [PyPI](https://pypi.org/project/quantfinance/) | [GitHub](https://github.com/Mafoya1er/quantfinance)
+[Documentation](https://mafoya1er.github.io/quantfinance/) | [PyPI](https://pypi.org/project/quantfinance/) | [GitHub](https://github.com/Mafoya1er/quantfinance)
 
 ## Fonctionnalités
 
@@ -169,21 +169,7 @@ backtester.plot_results()
 
 ## Documentation
 
-Documentation complète disponible sur [ReadTheDocs](https://quantfinance.readthedocs.io).
-
-### Guides
-
-- [Installation](https://quantfinance.readthedocs.io/en/latest/user_guide/installation.html)
-- [Démarrage Rapide](https://quantfinance.readthedocs.io/en/latest/user_guide/quickstart.html)
-- [Tutoriels](https://quantfinance.readthedocs.io/en/latest/user_guide/tutorials.html)
-- [Exemples](https://quantfinance.readthedocs.io/en/latest/user_guide/examples.html)
-
-### Référence API
-
-- [Pricing](https://quantfinance.readthedocs.io/en/latest/api/pricing.html)
-- [Risk](https://quantfinance.readthedocs.io/en/latest/api/risk.html)
-- [Portfolio](https://quantfinance.readthedocs.io/en/latest/api/portfolio.html)
-- [Utils](https://quantfinance.readthedocs.io/en/latest/api/utils.html)
+Documentation complète disponible sur [GitHub Pages](https://mafoya1er.github.io/quantfinance/).
 
 ## Tests
 
@@ -198,7 +184,7 @@ pytest --cov=quantfinance --cov-report=html
 pytest -m "not slow"
 ```
 
-##  Contribution
+## Contribution
 
 Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -208,7 +194,7 @@ Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING
 4. Push (`git push origin feature/AmazingFeature`)
 5. Ouvrez une Pull Request
 
-##  Licence
+## Licence
 
 Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
@@ -221,15 +207,15 @@ Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 
 ## Contact
 
-Marcel ALOEKPO - [LinkedIn](https://www.linkedin.com/in/marcel-aloekpo-21b42619a) -marcelaloekpo@gmail.com
+Marcel ALOEKPO - [LinkedIn](https://www.linkedin.com/in/marcel-aloekpo-21b42619a) - marcelaloekpo@gmail.com
 
-Projet: [https://github.com/Mafoya1er/quantfinance](https://github.com/Mafoya1er/quantfinance)
+Projet : [https://github.com/Mafoya1er/quantfinance](https://github.com/Mafoya1er/quantfinance)
 
 ## Support
 
 Si vous trouvez ce projet utile, n'hésitez pas à lui donner une étoile sur [GitHub](https://github.com/Mafoya1er/quantfinance) !
 
-##  Statistiques
+## Statistiques
 
 ![GitHub stars](https://img.shields.io/github/stars/Mafoya1er/quantfinance?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Mafoya1er/quantfinance?style=social)
