@@ -389,10 +389,10 @@ pip install quantfinance[all] <span class="cm"># Tout installer</span></pre></di
  <section id="quickstart">
  <h2 class="section-title">Démarrage rapide</h2>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>
-<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
-<span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
-<span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
+<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span> <span class="cl">BlackScholes</span>
+<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>
+<span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span> <span class="cl">VaRCalculator</span>
+<span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataLoader</span>
 
 <span class="cm"># Pricing d'une option call</span>
 bs = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>, option_type=<span class="st">'call'</span>)
@@ -438,7 +438,7 @@ var_95 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</
  <tr><td>option_type</td><td class="type">str</td><td>'call' ou 'put'</td></tr>
  </table>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>
+<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span> <span class="cl">BlackScholes</span>
 
 <span class="cm"># Option call européenne</span>
 bs_call = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>, option_type=<span class="st">'call'</span>)
@@ -535,7 +535,7 @@ implied_vol = bs_call.<span class="fn">implied_volatility</span>(market_price)
  <tr><td>american</td><td class="type">bool</td><td>True pour activer l'exercice anticipé</td></tr>
  </table>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BinomialTree</span>
+<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span> <span class="cl">BinomialTree</span>
 
 <span class="cm"># Option américaine put (exercice anticipé possible)</span>
 bt = <span class="cl">BinomialTree</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>,
@@ -559,7 +559,7 @@ bt_eu = <span class="cl">BinomialTree</span>(S=<span class="nb">100</span>, K=<s
  <div class="method-body">
  <p class="method-desc">Prix standard par simulation de trajectoires du sous-jacent.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">MonteCarlo</span>
+<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span> <span class="cl">MonteCarlo</span>
 
 mc = <span class="cl">MonteCarlo</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>, n_simulations=<span class="nb">50000</span>)
 <span class="fn">print</span>(<span class="st">f"Prix MC: {mc.price():.2f}"</span>)</pre></div>
@@ -606,7 +606,7 @@ prix_geo = mc.<span class="fn">asian_price</span>(averaging=<span class="st">'ge
  <div class="method-header"><div><div class="method-signature">__init__(face_value, coupon_rate, maturity, frequency=2)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.bonds <span class="kw">import</span><span class="cl">Bond</span>
+<pre><span class="kw">from</span> quantfinance.pricing.bonds <span class="kw">import</span> <span class="cl">Bond</span>
 
 <span class="cm"># Obligation 1000€, coupon 5%, maturité 10 ans, semi-annuel</span>
 bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, coupon_rate=<span class="nb">0.05</span>, maturity=<span class="nb">10</span>, frequency=<span class="nb">2</span>)</pre></div>
@@ -658,7 +658,7 @@ bond = <span class="cl">Bond</span>(face_value=<span class="nb">1000</span>, cou
  <div class="method-header"><div><div class="method-signature">historical_var(returns, confidence)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">VaR historique non paramétrique — quantile empirique des pertes observées.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
+<pre><span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span> <span class="cl">VaRCalculator</span>
 
 var_95 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</span>(returns, confidence=<span class="nb">0.95</span>)
 var_99 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</span>(returns, confidence=<span class="nb">0.99</span>)
@@ -723,7 +723,7 @@ var_ewma = <span class="cl">VaRCalculator</span>.<span class="fn">ewma_var</span
  <div class="method-header"><div><div class="method-signature">sharpe_ratio(returns, rf=0.0)</div><div class="method-return">→ float · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Ratio rendement/risque annualisé. Mesure le rendement excédentaire par unité de volatilité totale.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span><span class="cl">RiskMetrics</span>
+<pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span> <span class="cl">RiskMetrics</span>
 
 sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span>(returns, rf=<span class="nb">0.02</span>)
 <span class="fn">print</span>(<span class="st">f"Sharpe: {sharpe:.3f}"</span>) <span class="cm"># > 1 = bon, > 2 = excellent</span></pre></div>
@@ -772,7 +772,7 @@ sharpe = <span class="cl">RiskMetrics</span>.<span class="fn">sharpe_ratio</span
  <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span><span class="cl">PerformanceAnalyzer</span>
+<pre><span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span> <span class="cl">PerformanceAnalyzer</span>
 
 analyzer = <span class="cl">PerformanceAnalyzer</span>(returns, risk_free_rate=<span class="nb">0.02</span>)</pre></div>
  </div>
@@ -820,7 +820,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-header"><div><div class="method-signature">historical_scenarios(returns)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Applique des scénarios de crises historiques (2008, COVID-19, etc.) au portefeuille.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.risk.stress <span class="kw">import</span><span class="cl">StressTesting</span>
+<pre><span class="kw">from</span> quantfinance.risk.stress <span class="kw">import</span> <span class="cl">StressTesting</span>
 
 results = <span class="cl">StressTesting</span>.<span class="fn">historical_scenarios</span>(returns)
 <span class="fn">print</span>(results)
@@ -858,7 +858,7 @@ pnl = <span class="cl">StressTesting</span>.<span class="fn">custom_scenario</sp
  <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
  <div class="method-body"><p class="method-desc">Initialise l'optimiseur avec les rendements historiques et le taux sans risque.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>
 
 optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
  </div>
@@ -920,7 +920,7 @@ optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rat
  <div class="method-header"><div><div class="method-signature">__init__(optimizer)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">EfficientFrontier</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">EfficientFrontier</span>
 
 frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
  </div>
@@ -955,7 +955,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-header"><div><div class="method-signature">__init__(returns)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">AssetAllocator</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">AssetAllocator</span>
 
 allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  </div>
@@ -995,7 +995,7 @@ allocator = <span class="cl">AssetAllocator</span>(returns_df)</pre></div>
  <div class="method-header"><div><div class="method-signature">__init__(target_weights, prices, initial_capital=100000.0, transaction_cost=0.001)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span><span class="cl">Rebalancer</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span> <span class="cl">Rebalancer</span>
 
 rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
  initial_capital=<span class="nb">100000</span>, transaction_cost=<span class="nb">0.001</span>)</pre></div>
@@ -1029,7 +1029,7 @@ results = rebalancer.<span class="fn">threshold_rebalancing</span>(threshold=<sp
  <div class="method-header"><div><div class="method-signature">__init__(data, strategy, initial_capital=10000.0, commission=0.001)</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>
 
 strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">20</span>, long_window=<span class="nb">50</span>)
 backtester = <span class="cl">Backtester</span>(prices_df, strategy,
@@ -1067,7 +1067,7 @@ plt.<span class="fn">show</span>()</pre></div>
  <div class="method-header"><div><div class="method-signature">BuyAndHoldStrategy</div><div class="method-return">Stratégie passive</div></div></div>
  <div class="method-body"><p class="method-desc">Achète au début et conserve jusqu'à la fin. Sert de benchmark de référence.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">BuyAndHoldStrategy</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">BuyAndHoldStrategy</span>
 
 strategy = <span class="cl">BuyAndHoldStrategy</span>()
 signals = strategy.<span class="fn">generate_signals</span>(prices_df)
@@ -1078,7 +1078,7 @@ signals = strategy.<span class="fn">generate_signals</span>(prices_df)
  <div class="method-header"><div><div class="method-signature">MovingAverageCrossover(short_window=20, long_window=50)</div><div class="method-return">Stratégie de tendance</div></div></div>
  <div class="method-body"><p class="method-desc">Signal d'achat quand la MA courte croise la MA longue à la hausse, et de vente à la baisse.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">MovingAverageCrossover</span>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">MovingAverageCrossover</span>
 
 strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">10</span>, long_window=<span class="nb">30</span>)
 signals = strategy.<span class="fn">generate_signals</span>(prices_df)
@@ -1109,7 +1109,7 @@ results = bt.<span class="fn">run</span>()
  <div class="method-header"><div><div class="method-signature">load_csv(path)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Charge un fichier CSV local de prix ou de rendements.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataLoader</span>
 
 prices = <span class="cl">DataLoader</span>.<span class="fn">load_csv</span>(<span class="st">'data/prices.csv'</span>)
 <span class="fn">print</span>(prices.<span class="fn">head</span>())</pre></div>
@@ -1166,7 +1166,7 @@ clean = <span class="cl">DataLoader</span>.<span class="fn">clean_data</span>(ra
  <div class="method-header"><div><div class="method-signature">sma(prices, window) / ema(prices, window)</div><div class="method-return">→ pd.Series · Méthodes statiques</div></div></div>
  <div class="method-body"><p class="method-desc">Moyennes mobiles simple (SMA) et exponentielle (EMA).</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span><span class="cl">TechnicalIndicators</span>
+<pre><span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span> <span class="cl">TechnicalIndicators</span>
 
 close = prices[<span class="st">'Close'</span>]
 sma_20 = <span class="cl">TechnicalIndicators</span>.<span class="fn">sma</span>(close, window=<span class="nb">20</span>)
@@ -1336,7 +1336,7 @@ surachete = rsi[rsi <span class="op">></span><span class="nb">70</span>]</pre></
  </div>
  <div class="example-card-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span><span class="cl">BlackScholes</span>, <span class="cl">BinomialTree</span>, <span class="cl">MonteCarlo</span>
+<pre><span class="kw">from</span> quantfinance.pricing.options <span class="kw">import</span> <span class="cl">BlackScholes</span>, <span class="cl">BinomialTree</span>, <span class="cl">MonteCarlo</span>
 
 <span class="cm"># Paramètres communs</span>
 params = <span class="fn">dict</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>, option_type=<span class="st">'call'</span>)
@@ -1382,10 +1382,10 @@ Vol. implicite: {impl_vol:.2%}"</span>)
  </div>
  <div class="example-card-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
-<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>, <span class="cl">EfficientFrontier</span>
-<span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span><span class="cl">VaRCalculator</span>
-<span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span><span class="cl">RiskMetrics</span>, <span class="cl">PerformanceAnalyzer</span>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataLoader</span>
+<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>, <span class="cl">EfficientFrontier</span>
+<span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span> <span class="cl">VaRCalculator</span>
+<span class="kw">from</span> quantfinance.risk.metrics <span class="kw">import</span> <span class="cl">RiskMetrics</span>, <span class="cl">PerformanceAnalyzer</span>
 
 <span class="cm"># 1. Données</span>
 prices = <span class="cl">DataLoader</span>.<span class="fn">generate_synthetic_prices</span>(n_assets=<span class="nb">6</span>, n_days=<span class="nb">756</span>)
@@ -1431,9 +1431,9 @@ analyzer = <span class="cl">PerformanceAnalyzer</span>(port_ret, risk_free_rate=
  </div>
  <div class="example-card-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
-<span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span><span class="cl">TechnicalIndicators</span>
-<span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span><span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>, <span class="cl">BuyAndHoldStrategy</span>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataLoader</span>
+<span class="kw">from</span> quantfinance.utils.indicators <span class="kw">import</span> <span class="cl">TechnicalIndicators</span>
+<span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>, <span class="cl">BuyAndHoldStrategy</span>
 
 <span class="cm"># Données OHLCV sur 3 ans</span>
 data = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">756</span>)
@@ -1472,10 +1472,10 @@ res = bh.<span class="fn">run</span>()
  </div>
  <div class="example-card-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span><span class="cl">DataLoader</span>
-<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span><span class="cl">PortfolioOptimizer</span>
-<span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span><span class="cl">Rebalancer</span>
-<span class="kw">from</span> quantfinance.risk.stress <span class="kw">import</span><span class="cl">StressTesting</span>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataLoader</span>
+<span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>
+<span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span> <span class="cl">Rebalancer</span>
+<span class="kw">from</span> quantfinance.risk.stress <span class="kw">import</span> <span class="cl">StressTesting</span>
 
 <span class="cm"># Setup</span>
 prices = <span class="cl">DataLoader</span>.<span class="fn">generate_synthetic_prices</span>(n_assets=<span class="nb">4</span>, n_days=<span class="nb">756</span>)
