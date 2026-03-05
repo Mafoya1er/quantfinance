@@ -1552,129 +1552,170 @@ pytest tests/test_pricing.py -v</pre></div>
 <script>
 // COPY FUNCTION
 function copyCode(btn) {
-  const pre = btn.closest('.code-block').querySelector('pre');
+  const block = btn.closest('.code-block');
+  if (!block) return;
+  const pre = block.querySelector('pre');
   if (!pre) return;
-  const text = pre.innerText;
+  const text = pre.innerText || pre.textContent;
   const iconCopy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
   const iconDone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
   const done = () => {
     btn.classList.add('copied');
-    btn.innerHTML = iconDone + 'Copié !';
-    setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = iconCopy + 'Copier'; }, 2000);
+    btn.innerHTML = iconDone + ' Copié !';
+    setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = iconCopy + ' Copier'; }, 2000);
   };
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(done).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
-      document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); document.body.removeChild(ta); done();
-    });
-  } else {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
-    document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta); done();
-  }
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
+    } else {
+      fallback(text, done);
+    }
+  } catch(e) { fallback(text, done); }
+}
+function fallback(text, done) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); done(); } catch(e) {}
+  document.body.removeChild(ta);
 }
 
 // TAB SWITCHING
 function showTab(id, el) {
   document.querySelectorAll('.install-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.install-tab').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
   el.classList.add('active');
 }
 
 // THEME TOGGLE
 function toggleTheme() {
+  const isDark = document.body.classList.toggle('light');
   const btn = document.getElementById('themeBtn');
-  document.body.classList.toggle('light');
-  btn.textContent = document.body.classList.contains('light') ? 'Mode sombre' : 'Mode clair';
-  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  if (btn) btn.textContent = document.body.classList.contains('light') ? ' Sombre' : ' Clair';
+  localStorage.setItem('qf-theme', document.body.classList.contains('light') ? 'light' : 'dark');
 }
 (function() {
-  if (localStorage.getItem('theme') === 'light') {
+  if (localStorage.getItem('qf-theme') === 'light') {
     document.body.classList.add('light');
     const btn = document.getElementById('themeBtn');
-    if (btn) btn.textContent = 'Mode sombre';
+    if (btn) btn.textContent = ' Sombre';
   }
 })();
 
-// BACK TO TOP
+// BACK TO TOP — listens on document scroll
 (function() {
   const btn = document.createElement('button');
   btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Retour en haut');
   btn.innerHTML = '&#8679;';
-  btn.title = 'Retour en haut';
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
   document.body.appendChild(btn);
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-  });
+
+  function onScroll() {
+    const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+    btn.classList.toggle('visible', scrolled > 300);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-// SEARCH
+// SIDEBAR ACTIVE STATE
+(function() {
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
+
+  function setActive() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    let current = '';
+    sections.forEach(s => {
+      if (s.offsetTop <= scrollY + 120) current = s.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+
+// SEARCH — uses .method-signature (correct class name)
 (function() {
   const input = document.getElementById('searchInput');
   const results = document.getElementById('searchResults');
   if (!input || !results) return;
 
+  // Build index from method cards
   const index = [];
   document.querySelectorAll('.method-card').forEach(card => {
-    const module = card.closest('section') ? card.closest('section').querySelector('.section-title') : null;
-    const name = card.querySelector('.method-name');
+    const section = card.closest('section');
+    const moduleName = section ? (section.querySelector('.section-title') || section.querySelector('h2')) : null;
+    const sig = card.querySelector('.method-signature');
     const desc = card.querySelector('.method-desc');
-    if (name) index.push({
-      el: card,
-      module: module ? module.textContent.trim() : '',
-      name: name.textContent.trim(),
-      desc: desc ? desc.textContent.trim() : ''
-    });
+    if (sig) {
+      index.push({
+        el: card,
+        module: moduleName ? moduleName.textContent.replace(/[^\w\s.]/g, '').trim() : '',
+        name: sig.textContent.trim(),
+        desc: desc ? desc.textContent.trim() : ''
+      });
+    }
   });
 
-  input.addEventListener('input', () => {
-    const q = input.value.trim().toLowerCase();
+  function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  input.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
     results.innerHTML = '';
-    if (!q) { results.style.display = 'none'; return; }
-    const hits = index.filter(i => i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q) || i.module.toLowerCase().includes(q)).slice(0, 10);
-    if (!hits.length) { results.style.display = 'none'; return; }
+    if (!q || q.length < 2) { results.classList.remove('open'); return; }
+
+    const hits = index.filter(i =>
+      i.name.toLowerCase().includes(q) ||
+      i.desc.toLowerCase().includes(q) ||
+      i.module.toLowerCase().includes(q)
+    ).slice(0, 8);
+
+    if (!hits.length) {
+      results.innerHTML = '<div class="no-results">Aucun résultat pour "' + q + '"</div>';
+      results.classList.add('open');
+      return;
+    }
+
     hits.forEach(h => {
-      const div = document.createElement('div');
-      div.className = 'search-result-item';
-      const highlight = t => t.replace(new RegExp(q.replace(/[.*+?^${}()|[\]\]/g,'\$&'), 'gi'), m => '<mark>' + m + '</mark>');
-      div.innerHTML = '<span class="res-module">' + h.module + '</span><span class="res-name">' + highlight(h.name) + '</span>';
-      div.addEventListener('click', () => {
-        h.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        h.el.style.outline = '2px solid var(--accent)';
-        setTimeout(() => h.el.style.outline = '', 2000);
-        results.style.display = 'none';
+      const item = document.createElement('div');
+      item.className = 'search-result-item';
+      const hl = t => t.replace(new RegExp(escapeRe(q), 'gi'), m => '<mark>' + m + '</mark>');
+      item.innerHTML =
+        '<div class="res-module">' + h.module + '</div>' +
+        '<div class="res-name">' + hl(h.name) + '</div>';
+      item.addEventListener('click', function() {
+        results.classList.remove('open');
         input.value = '';
+        h.el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        h.el.style.outline = '2px solid var(--cyan)';
+        h.el.style.borderRadius = '8px';
+        setTimeout(() => { h.el.style.outline = ''; }, 2000);
       });
-      results.appendChild(div);
+      results.appendChild(item);
     });
-    results.style.display = 'block';
+    results.classList.add('open');
   });
 
   document.addEventListener('click', e => {
-    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+    if (!input.contains(e.target) && !results.contains(e.target)) {
+      results.classList.remove('open');
+    }
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') results.style.display = 'none'; });
-})();
-
-// INTERSECTION OBSERVER (sidebar active state)
-(function() {
-  const sections = document.querySelectorAll('section[id]');
-  const links = document.querySelectorAll('.sidebar-nav a[href^="#"]');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector('.sidebar-nav a[href="#' + entry.target.id + '"]');
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
-  sections.forEach(s => observer.observe(s));
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { results.classList.remove('open'); input.value = ''; }
+  });
 })();
 </script>
 </body>
