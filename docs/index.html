@@ -29,12 +29,24 @@
 
  /* SIDEBAR */
  .sidebar {
- width: 270px; min-width: 270px;
- background: var(--surface2);
- border-right: 1px solid var(--border);
- position: sticky; top: 0; height: 100vh;
- overflow-y: auto; padding: 0;
+      width: 270px;
+      min-width: 270px;
+      background: var(--surface2);
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 0;
+    }
+ position: sticky; top: 0;
+ height: 100vh;
+ overflow-y: auto;
+ overflow-x: hidden;
+ padding: 0;
+ scrollbar-width: none;
  }
+ .sidebar::-webkit-scrollbar { display: none; }
  .sidebar-logo { padding: 24px 20px 18px; border-bottom: 1px solid var(--border); }
  .sidebar-logo .logo-name { font-size: 21px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
  .sidebar-logo .logo-name span { color: var(--cyan); }
@@ -49,7 +61,7 @@
  .sidebar a.subsub:hover { color: var(--muted); }
 
  /* MAIN */
- .main { flex: 1; max-width: calc(100vw - 270px); overflow-x: hidden; }
+ .main { flex: 1; overflow-x: hidden; min-width: 0; }
 
  /* HERO */
  .hero {
@@ -114,7 +126,7 @@
  .class-body { padding: 20px 24px; }
 
  /* CODE */
- .code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 7px; overflow: hidden; margin: 10px 0; }
+ .code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 7px; overflow: hidden; max-width: 100%; margin: 10px 0; }
  .code-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 6px; }
  .code-dot { width: 9px; height: 9px; border-radius: 50%; }
  .code-dot.red { background: #ef4444; } .code-dot.yellow { background: #f59e0b; } .code-dot.green { background: #10b981; }
@@ -131,7 +143,7 @@
  .copy-btn:hover { background: rgba(37,99,235,0.15); border-color: var(--accent); color: var(--text); }
  .copy-btn.copied { background: rgba(16,185,129,0.15); border-color: var(--green); color: var(--green); }
  .copy-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
- pre { padding: 16px 18px; overflow-x: auto; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #e2e8f0; }
+ pre { padding: 16px 18px; overflow-x: auto; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.7; color: #e2e8f0; white-space: pre; }
  .kw { color: #c084fc; } .fn { color: #60a5fa; } .st { color: #4ade80; } .cm { color: #475569; } .nb { color: #fb923c; } .cl { color: #f0abfc; } .op { color: #94a3b8; }
 
  /* PARAMS TABLE */
@@ -1979,9 +1991,6 @@ fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_candlestick
 
  </section>
 
-</div>
-
-</html
  <!-- bootstrap_zero_curve -->
  <div class="class-card" id="bootstrap-zero-curve">
  <div class="class-header"><span class="class-icon">ƒ</span><div><div class="class-name">bootstrap_zero_curve()</div><div class="class-desc">Fonction standalone — bootstrap d'une courbe zéro-coupon à partir de prix d'obligations.</div></div></div>
@@ -2017,12 +2026,13 @@ zero_curve = <span class="fn">bootstrap_zero_curve</span>(prices, coupons, matur
 <span class="fn">print</span>(prices.tail())</pre></div>
  </div>
  </div>
- </div>
+ 
  </div>
 
-</section>
+ </section>
 
-      <section id="formulas">
+
+<section id="formulas">
  <h2 class="section-title"> Formules mathématiques</h2>
  <p>Les équations fondamentales implémentées dans QuantFinance.</p>
 
@@ -2357,8 +2367,6 @@ pytest tests/test_pricing.py -v</pre></div>
  </div>
     </section>
 
-    </div>
-  </div>
 </div>
 
 <script>
@@ -2530,5 +2538,6 @@ function toggleTheme() {
   });
 })();
 </script>
+</div>
 </body>
 </html>
