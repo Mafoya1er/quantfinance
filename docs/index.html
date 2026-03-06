@@ -285,13 +285,24 @@
       border-radius: 2px;
       opacity: 0.5;
     }
+
+    /* ─── RESIZE STRIP ─── */
+    .sidebar-wrap { position: relative; flex-shrink: 0; }
+    .sidebar-wrap .sidebar { width: 100%; min-width: 100%; }
+    .resize-strip {
+      position: absolute;
+      top: 0; right: -3px;
+      width: 6px; height: 100%;
+      cursor: col-resize;
+      z-index: 100;
+    }
 </style>
 </head>
 <body>
 <div class="wrapper">
 
  <!-- SIDEBAR -->
- <nav class="sidebar">
+ <div class="sidebar-wrap" id="sidebarWrap" style="width:270px"><div class="resize-strip" id="resizeStrip"></div><nav class="sidebar">
  <div class="sidebar-logo">
  <div style="display:flex;align-items:center;justify-content:space-between;">
  <div class="logo-name">Quant<span>Finance</span></div>
@@ -371,7 +382,7 @@
  <a href="#tests">Tests</a>
  <a href="#contrib">Contribution</a>
  </div>
- </nav>
+ </nav></div>
 
  <!-- MAIN -->
  <div class="main">
@@ -2568,33 +2579,25 @@ function toggleTheme() {
 
 // ─── RESIZABLE SIDEBAR ───
 (function() {
-  var sidebar = document.querySelector('.sidebar');
-  if (!sidebar) return;
+  var wrap = document.getElementById('sidebarWrap');
+  var strip = document.getElementById('resizeStrip');
+  if (!wrap || !strip) return;
   var dragging = false;
   var startX, startWidth;
 
-  document.addEventListener('mousemove', function(e) {
-    if (dragging) {
-      var newWidth = Math.min(500, Math.max(150, startWidth + (e.clientX - startX)));
-      sidebar.style.width = newWidth + 'px';
-      sidebar.style.minWidth = newWidth + 'px';
-      return;
-    }
-    var rect = sidebar.getBoundingClientRect();
-    var nearEdge = e.clientX >= rect.right - 6 && e.clientX <= rect.right + 6;
-    document.body.style.cursor = nearEdge ? 'col-resize' : '';
-  });
-
-  document.addEventListener('mousedown', function(e) {
-    var rect = sidebar.getBoundingClientRect();
-    var nearEdge = e.clientX >= rect.right - 6 && e.clientX <= rect.right + 6;
-    if (!nearEdge) return;
+  strip.addEventListener('mousedown', function(e) {
     dragging = true;
     startX = e.clientX;
-    startWidth = sidebar.offsetWidth;
+    startWidth = wrap.offsetWidth;
     document.body.style.cursor = 'col-resize';
     document.body.style.userSelect = 'none';
     e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    var newWidth = Math.min(500, Math.max(150, startWidth + (e.clientX - startX)));
+    wrap.style.width = newWidth + 'px';
   });
 
   document.addEventListener('mouseup', function() {
