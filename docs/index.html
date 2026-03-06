@@ -296,31 +296,6 @@
 
     /* Sidebar background extends full page height */
     .sidebar-wrap { position: fixed; top: 0; left: 0; height: 100vh; z-index: 50; flex-shrink: 0; }
-    
-
-    /* Hamburger button */
-      .menu-btn {
-        display: flex;
-        position: fixed;
-        top: 14px; left: 14px;
-        z-index: 1100;
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        width: 38px; height: 38px;
-        align-items: center; justify-content: center;
-        cursor: pointer;
-        flex-direction: column;
-        gap: 5px;
-        padding: 8px;
-      }
-      .menu-btn span {
-        display: block;
-        width: 18px; height: 2px;
-        background: var(--text);
-        border-radius: 2px;
-        transition: all 0.2s;
-      }
 
       /* Overlay */
       .sidebar-overlay {
@@ -414,14 +389,6 @@
       .math-formula { font-size: 12px; white-space: nowrap; }
     }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-
-      html, body {
-        max-width: 100%;
-        overflow-x: hidden;
-      }
-
       /* Sidebar sort du flux et se cache à gauche */
       .sidebar-wrap {
         position: fixed !important;
@@ -479,21 +446,26 @@
       .math-block { overflow-x: auto; }
     }
 
-    /* Hamburger toujours visible sur mobile */
+    /* ═══════════════════════════════════════
+       RESPONSIVE MOBILE
+    ═══════════════════════════════════════ */
+
+    /* Bouton hamburger - caché par défaut */
     .menu-btn {
       display: none;
       position: fixed;
       top: 12px; left: 12px;
-      z-index: 1100;
+      z-index: 2000;
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 6px;
       width: 40px; height: 40px;
-      align-items: center; justify-content: center;
       cursor: pointer;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 5px;
-      padding: 9px;
+      padding: 0;
     }
     .menu-btn span {
       display: block;
@@ -505,13 +477,88 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: 999;
+      background: rgba(0,0,0,0.6);
+      z-index: 1500;
     }
-    .sidebar-overlay.open { display: block; }
 
     @media (max-width: 900px) {
+
+      /* Affiche le bouton hamburger */
       .menu-btn { display: flex; }
+
+      /* ─ CRITIQUE : casse le flex pour que main prenne 100% ─ */
+      .wrapper {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Sidebar hors du flux, cachée à gauche */
+      .sidebar-wrap {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        height: 100vh !important;
+        width: 270px !important;
+        z-index: 1600 !important;
+        transform: translateX(-110%) !important;
+        transition: transform 0.25s ease !important;
+      }
+      .sidebar-wrap.open {
+        transform: translateX(0) !important;
+      }
+      .sidebar {
+        width: 270px !important;
+        min-width: 270px !important;
+        height: 100vh !important;
+      }
+      .resize-strip { display: none !important; }
+
+      /* Main prend toute la largeur */
+      .main {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      html, body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      /* Paddings */
+      .hero { padding: 52px 16px 32px !important; }
+      .content { padding: 20px 16px !important; }
+      .hero h1 { font-size: 28px !important; letter-spacing: -1px !important; }
+      .hero-links { flex-wrap: wrap !important; }
+      .badges { flex-wrap: wrap !important; }
+
+      /* Blocs de code scrollent horizontalement en interne */
+      .code-block { max-width: 100% !important; overflow: hidden !important; }
+      pre {
+        overflow-x: auto !important;
+        font-size: 11px !important;
+        -webkit-overflow-scrolling: touch !important;
+        white-space: pre !important;
+      }
+
+      /* Tables scrollent en interne */
+      .params-table, .comparison-table {
+        display: block !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+      }
+
+      .feature-grid { grid-template-columns: 1fr !important; }
+      .class-body { padding: 12px !important; }
+      .method-body { padding: 10px 12px !important; }
+      .class-header { padding: 12px 14px !important; }
+      .math-block { overflow-x: auto !important; }
+      .math-formula { font-size: 12px !important; }
     }
 </style>
 </head>
@@ -2837,26 +2884,30 @@ function toggleTheme() {
 
 
 
+
+
 // ─── MOBILE MENU ───
 (function() {
   var btn = document.getElementById('menuBtn');
   var wrap = document.getElementById('sidebarWrap');
   var overlay = document.getElementById('sidebarOverlay');
   if (!btn || !wrap || !overlay) return;
-  btn.addEventListener('click', function() {
-    var isOpen = wrap.classList.toggle('open');
-    if (isOpen) overlay.style.display = 'block';
-    else overlay.style.display = 'none';
-  });
-  overlay.addEventListener('click', function() {
+
+  function open() {
+    wrap.classList.add('open');
+    overlay.style.display = 'block';
+  }
+  function close() {
     wrap.classList.remove('open');
     overlay.style.display = 'none';
+  }
+
+  btn.addEventListener('click', function() {
+    wrap.classList.contains('open') ? close() : open();
   });
+  overlay.addEventListener('click', close);
   wrap.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      wrap.classList.remove('open');
-      overlay.style.display = 'none';
-    });
+    a.addEventListener('click', close);
   });
 })();
 </script>
