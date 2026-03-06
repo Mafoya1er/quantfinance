@@ -298,26 +298,7 @@
     .sidebar-wrap { position: fixed; top: 0; left: 0; height: 100vh; z-index: 50; flex-shrink: 0; }
     
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .sidebar-wrap {
-        position: fixed;
-        top: 0; left: 0;
-        height: 100vh;
-        z-index: 1000;
-        transform: translateX(-100%);
-        transition: transform 0.25s ease;
-      }
-      .sidebar-wrap.open {
-        transform: translateX(0);
-      }
-      .sidebar { height: 100vh; }
-      .main { max-width: 100vw !important; }
-      .hero { padding: 40px 24px; }
-      .content { padding: 32px 24px; }
-      .hero h1 { font-size: 34px; }
-
-      /* Hamburger button */
+    /* Hamburger button */
       .menu-btn {
         display: flex;
         position: fixed;
@@ -375,9 +356,7 @@
       .method-body { padding: 12px; }
     }
 
-    /* ─── MOBILE OVERFLOW FIX ─── */
-    @media (max-width: 900px) {
-      /* Force tout le contenu à rester dans l'écran */
+    /* Force tout le contenu à rester dans l'écran */
       html, body {
         max-width: 100vw;
         overflow-x: hidden;
@@ -433,6 +412,106 @@
       /* Math blocks */
       .math-block { overflow-x: auto; }
       .math-formula { font-size: 12px; white-space: nowrap; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Sidebar sort du flux et se cache à gauche */
+      .sidebar-wrap {
+        position: fixed !important;
+        top: 0; left: 0;
+        height: 100vh;
+        width: 270px !important;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+      }
+      .sidebar-wrap.open {
+        transform: translateX(0);
+      }
+      .sidebar { height: 100vh; width: 270px !important; }
+      .resize-strip { display: none !important; }
+
+      /* Le main prend toute la largeur */
+      .wrapper {
+        display: block;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      .main {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        min-width: 0;
+      }
+
+      /* Contenu padding */
+      .hero { padding: 50px 16px 32px; }
+      .content { padding: 20px 16px; }
+      .hero h1 { font-size: 28px; letter-spacing: -1px; }
+      .hero-links { flex-wrap: wrap; }
+      .badges { flex-wrap: wrap; }
+
+      /* Blocs de code scrollent en interne */
+      .code-block { max-width: 100%; }
+      pre {
+        overflow-x: auto;
+        font-size: 11px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Tables scrollent en interne */
+      .params-table, .comparison-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .feature-grid { grid-template-columns: 1fr; }
+      .class-body { padding: 12px; }
+      .method-body { padding: 10px 12px; }
+      .math-block { overflow-x: auto; }
+    }
+
+    /* Hamburger toujours visible sur mobile */
+    .menu-btn {
+      display: none;
+      position: fixed;
+      top: 12px; left: 12px;
+      z-index: 1100;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 9px;
+    }
+    .menu-btn span {
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 999;
+    }
+    .sidebar-overlay.open { display: block; }
+
+    @media (max-width: 900px) {
+      .menu-btn { display: flex; }
     }
 </style>
 </head>
@@ -2755,30 +2834,29 @@ function toggleTheme() {
 })();
 
 
+
+
+
 // ─── MOBILE MENU ───
 (function() {
   var btn = document.getElementById('menuBtn');
   var wrap = document.getElementById('sidebarWrap');
   var overlay = document.getElementById('sidebarOverlay');
   if (!btn || !wrap || !overlay) return;
-
-  function openMenu() {
-    wrap.classList.add('open');
-    overlay.classList.add('open');
-  }
-  function closeMenu() {
-    wrap.classList.remove('open');
-    overlay.classList.remove('open');
-  }
-
   btn.addEventListener('click', function() {
-    wrap.classList.contains('open') ? closeMenu() : openMenu();
+    var isOpen = wrap.classList.toggle('open');
+    if (isOpen) overlay.style.display = 'block';
+    else overlay.style.display = 'none';
   });
-  overlay.addEventListener('click', closeMenu);
-
-  // Close on link click
+  overlay.addEventListener('click', function() {
+    wrap.classList.remove('open');
+    overlay.style.display = 'none';
+  });
   wrap.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
+    a.addEventListener('click', function() {
+      wrap.classList.remove('open');
+      overlay.style.display = 'none';
+    });
   });
 })();
 </script>
