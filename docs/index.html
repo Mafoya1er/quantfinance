@@ -274,6 +274,18 @@
  </div>
 
  <div class="sidebar-section">
+ <div class="sidebar-section-title">API · Portfolio</div>
+ <a href="#portfolio">quantfinance.portfolio</a>
+ <a href="#portfoliooptimizer" class="sub">PortfolioOptimizer</a>
+ <a href="#efficientfrontier" class="sub">EfficientFrontier</a>
+ <a href="#assetallocator" class="sub">AssetAllocator</a>
+ <a href="#rebalancer" class="sub">Rebalancer</a>
+ <a href="#strategy-abc" class="sub">Strategy (ABC)</a>
+ <a href="#backtester" class="sub">Backtester</a>
+ <a href="#strategies" class="sub">Stratégies</a>
+ </div>
+
+ <div class="sidebar-section">
  <div class="sidebar-section-title">API · Pricing</div>
  <a href="#pricing">quantfinance.pricing</a>
  <a href="#blackscholes" class="sub">BlackScholes</a>
@@ -296,18 +308,6 @@
  </div>
 
  <div class="sidebar-section">
- <div class="sidebar-section-title">API · Portfolio</div>
- <a href="#portfolio">quantfinance.portfolio</a>
- <a href="#portfoliooptimizer" class="sub">PortfolioOptimizer</a>
- <a href="#efficientfrontier" class="sub">EfficientFrontier</a>
- <a href="#assetallocator" class="sub">AssetAllocator</a>
- <a href="#rebalancer" class="sub">Rebalancer</a>
- <a href="#strategy-abc" class="sub">Strategy (ABC)</a>
- <a href="#backtester" class="sub">Backtester</a>
- <a href="#strategies" class="sub">Stratégies</a>
- </div>
-
- <div class="sidebar-section">
  <div class="sidebar-section-title">API · Utils</div>
  <a href="#utils">quantfinance.utils</a>
  <a href="#dataloader" class="sub">DataLoader</a>
@@ -318,7 +318,6 @@
  <a href="#financialplotter" class="sub">FinancialPlotter</a>
  <a href="#indicators" class="sub">TechnicalIndicators</a>
  </div>
-
 
  <div class="sidebar-section">
  <div class="sidebar-section-title">Référence</div>
@@ -364,10 +363,9 @@
  <h2 class="section-title">Présentation</h2>
  <p>QuantFinance est une bibliothèque Python complète pour la finance quantitative. Elle couvre le pricing d'instruments financiers, la gestion des risques, l'optimisation de portefeuille et le backtesting de stratégies.</p>
  <div class="feature-grid">
+ <div class="feature-card"><div class="icon"></div><h4>Portefeuille</h4><ul><li>Markowitz</li><li>Risk Parity</li><li>Black-Litterman</li><li>HRP</li><li>Max Diversification</li></ul></div>
  <div class="feature-card"><div class="icon"></div><h4>Pricing</h4><ul><li>Black-Scholes</li><li>Binomial Tree</li><li>Monte Carlo</li><li>Options exotiques</li><li>Obligations</li></ul></div>
  <div class="feature-card"><div class="icon"></div><h4>Risque</h4><ul><li>VaR (4 méthodes)</li><li>CVaR / ES</li><li>Sharpe, Sortino, Calmar</li><li>Max Drawdown</li><li>Stress Testing</li></ul></div>
- <div class="feature-card"><div class="icon"></div><h4>Portefeuille</h4><ul><li>Markowitz</li><li>Risk Parity</li><li>Black-Litterman</li><li>HRP</li><li>Max Diversification</li></ul></div>
- <div class="feature-card"><div class="icon"></div><h4>Backtesting</h4><ul><li>MA Crossover</li><li>Buy &amp; Hold</li><li>Momentum</li><li>Coûts de transaction</li></ul></div>
  <div class="feature-card"><div class="icon"></div><h4>Utilitaires</h4><ul><li>Yahoo Finance</li><li>Données synthétiques</li><li>RSI, MACD, Bollinger</li><li>Rééquilibrage</li></ul></div>
  </div>
  </section>
@@ -418,6 +416,312 @@ result = optimizer.<span class="fn">maximize_sharpe</span>()
 <span class="cm"># Value at Risk</span>
 var_95 = <span class="cl">VaRCalculator</span>.<span class="fn">historical_var</span>(returns.iloc[:, <span class="nb">0</span>], <span class="nb">0.95</span>)
 <span class="fn">print</span>(<span class="st">f"VaR 95%: {var_95:.2%}"</span>)</pre></div>
+ </section>
+
+ <!-- 
+ PORTFOLIO
+ -->
+ <section id="portfolio">
+ <h2 class="section-title"> quantfinance.portfolio</h2>
+ <p>Module d'optimisation de portefeuille, d'allocation d'actifs et de backtesting.</p>
+
+ <!-- PortfolioOptimizer -->
+ <div class="class-card" id="portfoliooptimizer">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">PortfolioOptimizer</div><div class="class-desc">Classe principale pour l'optimisation de portefeuille.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
+ <div class="method-body"><p class="method-desc">Initialise l'optimiseur avec les rendements historiques et le taux sans risque.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>
+
+optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">equal_weight()</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Crée un portefeuille équipondéré (poids égaux pour chaque actif).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">equal_weight</span>()
+<span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])
+<span class="fn">print</span>(<span class="st">"Rendement:"</span>, result[<span class="st">'return'</span>])</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">minimize_volatility(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Minimise la volatilité du portefeuille — portefeuille à variance minimale.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">minimize_volatility</span>()
+<span class="fn">print</span>(<span class="st">f"Volatilité minimale: {result['volatility']:.2%}"</span>)
+<span class="fn">print</span>(<span class="st">f"Rendement associé: {result['return']:.2%}"</span>)
+<span class="fn">print</span>(result[<span class="st">'weights'</span>])</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">maximize_sharpe(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Maximise le ratio de Sharpe — point tangent de la frontière efficiente.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">maximize_sharpe</span>()
+<span class="fn">print</span>(<span class="st">f"Sharpe max: {result['sharpe_ratio']:.3f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Rendement: {result['return']:.2%}"</span>)
+<span class="fn">print</span>(<span class="st">f"Volatilité: {result['volatility']:.2%}"</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">maximize_return(target_volatility)</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Maximise le rendement sous contrainte de volatilité cible. Retourne un objet résultat scipy avec les poids optimaux dans <code>result.x</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">maximize_return</span>(target_volatility=<span class="nb">0.18</span>)
+weights = pd.<span class="cl">Series</span>(result.x, index=optimizer.assets)
+ret, vol, sharpe = optimizer.<span class="fn">portfolio_performance</span>(weights)
+<span class="fn">print</span>(<span class="st">f"Rendement max (vol≤18%): {ret:.2%}"</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">risk_parity()</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Portefeuille de parité de risque — chaque actif contribue également au risque total.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">risk_parity</span>()
+<span class="fn">print</span>(<span class="st">"Contribution au risque:"</span>, result[<span class="st">'risk_contribution'</span>])
+<span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])</pre></div>
+ 
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">portfolio_performance(weights)</div><div class="method-return">→ Tuple[float, float, float]</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule les métriques annualisées d'un portefeuille : rendement, volatilité et ratio de Sharpe.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+weights = np.<span class="fn">array</span>([<span class="nb">0.25</span>, <span class="nb">0.25</span>, <span class="nb">0.25</span>, <span class="nb">0.25</span>])
+ret, vol, sharpe = optimizer.<span class="fn">portfolio_performance</span>(weights)
+<span class="fn">print</span>(<span class="st">f"Rendement: {ret:.2%} | Volatilité: {vol:.2%} | Sharpe: {sharpe:.3f}"</span>)</pre></div>
+ </div>
+ </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">expected_return(weights) / portfolio_volatility(weights)</div><div class="method-return">→ float</div></div></div>
+ <div class="method-body"><p class="method-desc">Utilitaires bas niveau — calcule séparément le rendement espéré ou la volatilité d'un portefeuille donné.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>weights = np.<span class="fn">array</span>([<span class="nb">0.4</span>, <span class="nb">0.3</span>, <span class="nb">0.2</span>, <span class="nb">0.1</span>])
+<span class="fn">print</span>(<span class="st">f"Rendement: {optimizer.expected_return(weights):.2%}"</span>)
+<span class="fn">print</span>(<span class="st">f"Volatilité: {optimizer.portfolio_volatility(weights):.2%}"</span>)</pre></div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- EfficientFrontier -->
+ <div class="class-card" id="efficientfrontier">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">EfficientFrontier</div><div class="class-desc">Calcul et visualisation de la frontière efficiente de Markowitz.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(optimizer)</div></div></div>
+ <div class="method-body">
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">EfficientFrontier</span>
+
+frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">calculate_frontier(n_points=50, min_return=None, max_return=None)</div><div class="method-return">→ pd.DataFrame</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule les portefeuilles optimaux sur la frontière efficiente.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>frontier_data = frontier.<span class="fn">calculate_frontier</span>(n_points=<span class="nb">50</span>)
+<span class="fn">print</span>(frontier_data.<span class="fn">head</span>())
+<span class="cm"># columns: return, volatility, sharpe_ratio, weights...</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot(show_assets=True, show_optimal=True, figsize=(12,8))</div><div class="method-return">→ Figure</div></div></div>
+ <div class="method-body"><p class="method-desc">Trace la frontière efficiente avec les actifs individuels et le portefeuille optimal.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+fig = frontier.<span class="fn">plot</span>(show_assets=<span class="kw">True</span>, show_optimal=<span class="kw">True</span>)
+plt.<span class="fn">show</span>()</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- AssetAllocator -->
+ <div class="class-card" id="assetallocator">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">AssetAllocator</div><div class="class-desc">Stratégies d'allocation avancées — HRP, min corrélation, max diversification.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(returns)</div></div></div>
+ <div class="method-body">
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">AssetAllocator</span>
+
+<span class="cm"># Internalement : cov_matrix et std_devs sont annualisés (×252)</span>
+allocator = <span class="cl">AssetAllocator</span>(returns_df) <span class="cm"># returns = rendements quotidiens</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">hierarchical_risk_parity()</div><div class="method-return">→ pd.Series</div></div></div>
+ <div class="method-body"><p class="method-desc">Allocation HRP — utilise la hiérarchie des corrélations pour diversifier sans inversion de matrice.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>weights = allocator.<span class="fn">hierarchical_risk_parity</span>()
+<span class="fn">print</span>(<span class="st">"Poids HRP:"</span>, weights)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">minimum_correlation()</div><div class="method-return">→ pd.Series</div></div></div>
+ <div class="method-body"><p class="method-desc">Minimise la corrélation moyenne entre les actifs du portefeuille.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>weights = allocator.<span class="fn">minimum_correlation</span>()
+<span class="fn">print</span>(<span class="st">"Poids min corr:"</span>, weights)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">maximum_diversification()</div><div class="method-return">→ pd.Series</div></div></div>
+ <div class="method-body"><p class="method-desc">Maximise le ratio de diversification — rapport volatilité pondérée / volatilité portefeuille.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>weights = allocator.<span class="fn">maximum_diversification</span>()
+<span class="fn">print</span>(<span class="st">"Poids max div:"</span>, weights)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Rebalancer -->
+ <div class="class-card" id="rebalancer">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Rebalancer</div><div class="class-desc">Gestion du rééquilibrage de portefeuille.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(target_weights, prices, initial_capital=100000.0, transaction_cost=0.001)</div></div></div>
+ <div class="method-body">
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span> <span class="cl">Rebalancer</span>
+
+rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
+ initial_capital=<span class="nb">100000</span>, transaction_cost=<span class="nb">0.001</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">periodic_rebalancing(frequency='monthly')</div><div class="method-return">→ pd.DataFrame</div></div></div>
+ <div class="method-body"><p class="method-desc">Rééquilibre à intervalles fixes. Fréquences : <code>'daily'</code>, <code>'weekly'</code> (lundi), <code>'monthly'</code> (fin de mois), <code>'quarterly'</code>, <code>'yearly'</code>. Retourne un DataFrame avec colonnes : <code>portfolio_value</code>, <code>cash</code>, <code>holdings_value</code>, <code>is_rebalance</code>, <code>weight_&lt;asset&gt;</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>results = rebalancer.<span class="fn">periodic_rebalancing</span>(frequency=<span class="st">'quarterly'</span>)
+<span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">threshold_rebalancing(threshold=0.05)</div><div class="method-return">→ pd.DataFrame</div></div></div>
+ <div class="method-body"><p class="method-desc">Rééquilibre uniquement quand un poids dévie de plus de <code>threshold</code> par rapport à la cible. Retourne un DataFrame avec les mêmes colonnes que <code>periodic_rebalancing</code>, plus <code>rebalance_count</code> (compteur cumulatif de rééquilibrages).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="cm"># Rééquilibre si déviation > 3%</span>
+results = rebalancer.<span class="fn">threshold_rebalancing</span>(threshold=<span class="nb">0.03</span>)
+<span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Backtester -->
+ 
+ <!-- Strategy ABC -->
+ <div class="class-card" id="strategy-abc">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Strategy (ABC)</div><div class="class-desc">Classe abstraite de base pour toutes les stratégies — à sous-classer pour créer une stratégie personnalisée.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">generate_signals(data)</div><div class="method-return">→ pd.Series · Méthode abstraite</div></div></div>
+ <div class="method-body"><p class="method-desc">Génère les signaux de trading. Doit retourner une Series avec les valeurs : <code>1</code> (long), <code>0</code> (neutre), <code>-1</code> (short).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Strategy</span>
+
+<span class="kw">class</span> <span class="cl">MyStrategy</span>(<span class="cl">Strategy</span>):
+ <span class="kw">def</span> <span class="fn">generate_signals</span>(<span class="kw">self</span>, data):
+ <span class="cm"># Exemple : signal basé sur RSI personnalisé</span>
+ close = data[<span class="st">'Close'</span>]
+ signal = pd.<span class="cl">Series</span>(<span class="nb">0</span>, index=data.index)
+ signal[close > close.<span class="fn">rolling</span>(<span class="nb">20</span>).<span class="fn">mean</span>()] = <span class="nb">1</span>
+ signal[close < close.<span class="fn">rolling</span>(<span class="nb">20</span>).<span class="fn">mean</span>()] = <span class="op">-</span><span class="nb">1</span>
+ <span class="kw">return</span> signal
+
+strategy = <span class="cl">MyStrategy</span>()
+bt = <span class="cl">Backtester</span>(data, strategy, initial_capital=<span class="nb">10000</span>)
+results = bt.<span class="fn">run</span>()</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="class-card" id="backtester">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Backtester</div><div class="class-desc">Framework de backtesting de stratégies de trading.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(data, strategy, initial_capital=10000.0, commission=0.001)</div></div></div>
+ <div class="method-body">
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>
+
+strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">20</span>, long_window=<span class="nb">50</span>)
+backtester = <span class="cl">Backtester</span>(prices_df, strategy,
+ initial_capital=<span class="nb">10000</span>, commission=<span class="nb">0.0005</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">run()</div><div class="method-return">→ Dict</div></div></div>
+ <div class="method-body"><p class="method-desc">Exécute le backtest et retourne les métriques de performance.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>results = backtester.<span class="fn">run</span>()
+<span class="fn">print</span>(<span class="st">f"Capital final: {results['Final Value']:.2f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Rendement total: {results['Total Return']:.2%}"</span>)
+<span class="fn">print</span>(<span class="st">f"Ratio de Sharpe: {results['Sharpe Ratio']:.3f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Max Drawdown: {results['Max Drawdown']:.2%}"</span>)
+<span class="fn">print</span>(<span class="st">f"Nb transactions: {results['Number of Trades']}"</span>)
+<span class="fn">print</span>(<span class="st">f"Win Rate: {results['Win Rate']:.1%}"</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_results(figsize=(14,10))</div><div class="method-return">→ Figure</div></div></div>
+ <div class="method-body"><p class="method-desc">Trace la courbe de capital, les signaux de trading et les drawdowns. Lève <code>ValueError</code> si <code>run()</code> n'a pas été appelé avant. Génère 3 sous-graphiques : prix + signaux, valeur du portefeuille, drawdown.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+fig = backtester.<span class="fn">plot_results</span>()
+plt.<span class="fn">show</span>()</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Strategies -->
+ <div class="class-card" id="strategies">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Stratégies de trading</div><div class="class-desc">Stratégies prêtes à l'emploi pour le backtesting.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">BuyAndHoldStrategy</div><div class="method-return">Stratégie passive</div></div></div>
+ <div class="method-body"><p class="method-desc">Achète au début et conserve jusqu'à la fin. Sert de benchmark de référence.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">BuyAndHoldStrategy</span>
+
+strategy = <span class="cl">BuyAndHoldStrategy</span>()
+signals = strategy.<span class="fn">generate_signals</span>(prices_df)
+<span class="fn">print</span>(signals.<span class="fn">head</span>()) <span class="cm"># Toujours 1 (long)</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">MovingAverageCrossover(short_window=20, long_window=50)</div><div class="method-return">Stratégie de tendance</div></div></div>
+ <div class="method-body"><p class="method-desc">Signal d'achat quand la MA courte croise la MA longue à la hausse, et de vente à la baisse.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">MovingAverageCrossover</span>
+
+strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">10</span>, long_window=<span class="nb">30</span>)
+signals = strategy.<span class="fn">generate_signals</span>(prices_df)
+<span class="fn">print</span>(signals.<span class="fn">head</span>()) <span class="cm"># 1 = long, -1 = short, 0 = neutre</span>
+
+<span class="cm"># Backtest complet</span>
+bt = <span class="cl">Backtester</span>(prices_df, strategy, initial_capital=<span class="nb">50000</span>)
+results = bt.<span class="fn">run</span>()
+<span class="fn">print</span>(<span class="st">f"Rendement total: {results['Total Return']:.2%}"</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
  </section>
 
  <!-- 
@@ -875,9 +1179,7 @@ surface = <span class="cl">ImpliedVolatility</span>.<span class="fn">volatility_
  </div>
  </div>
 
-</section>
-
- <!-- 
+</section><!-- 
  RISK
  -->
  <section id="risk">
@@ -1195,412 +1497,6 @@ pnl = <span class="cl">StressTesting</span>.<span class="fn">custom_scenario</sp
  </div>
  </div>
  
- <!-- DataCleaner -->
- <div class="class-card" id="datacleaner">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataCleaner</div><div class="class-desc">Nettoyage et préparation de données financières.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">handle_missing_values(data, method='ffill', limit=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Gère les valeurs manquantes. Méthodes : <code>'ffill'</code>, <code>'bfill'</code>, <code>'interpolate'</code>, <code>'drop'</code>, <code>'mean'</code>, <code>'median'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataCleaner</span>
-
-clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'ffill'</span>, limit=<span class="nb">5</span>)
-clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'interpolate'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">remove_outliers(data, n_std=3.0, method='clip')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Retire ou corrige les valeurs aberrantes. Méthodes : <code>'clip'</code> (ajuste aux bornes ±n_std), <code>'remove'</code> (supprime les lignes), <code>'winsorize'</code> (clip aux percentiles 5%/95%).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>clean = <span class="cl">DataCleaner</span>.<span class="fn">remove_outliers</span>(returns, n_std=<span class="nb">3.0</span>, method=<span class="st">'clip'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">winsorize(data, lower_percentile=0.05, upper_percentile=0.95)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Plafonne les valeurs extrêmes aux percentiles spécifiés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>winsorized = <span class="cl">DataCleaner</span>.<span class="fn">winsorize</span>(returns, lower_percentile=<span class="nb">0.01</span>, upper_percentile=<span class="nb">0.99</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">calculate_returns(prices, method='simple', periods=1)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule les rendements à partir des prix. Méthodes : <code>'simple'</code> (arithmétique, pct_change) ou <code>'log'</code> (logarithmique, ln(P_t/P_{t-1})). Supprime automatiquement les NaN.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>returns = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'log'</span>)
-returns_5d = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'simple'</span>, periods=<span class="nb">5</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">align_data(*dataframes, join='inner') / resample_data(data, frequency, method='last')</div><div class="method-return">→ tuple | pd.DataFrame · Méthodes statiques</div></div></div>
- <div class="method-body"><p class="method-desc"><code>align_data</code> aligne plusieurs DataFrames sur les mêmes dates. <code>resample_data</code> rééchantillonne à une fréquence différente — méthodes : <code>'last'</code>, <code>'first'</code>, <code>'mean'</code>, <code>'sum'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>df1, df2 = <span class="cl">DataCleaner</span>.<span class="fn">align_data</span>(prices1, prices2, join=<span class="st">'inner'</span>)
-monthly = <span class="cl">DataCleaner</span>.<span class="fn">resample_data</span>(daily_prices, frequency=<span class="st">'M'</span>, method=<span class="st">'last'</span>)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- DataTransformer -->
- <div class="class-card" id="datatransformer">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataTransformer</div><div class="class-desc">Transformations de données financières : normalisation, indicateurs techniques, features ML.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">normalize(data, method='zscore')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Normalise les données. Méthodes : <code>'zscore'</code> (standardisation), <code>'minmax'</code> (0–1), <code>'robust'</code> (médiane/IQR).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataTransformer</span>
-
-normalized = <span class="cl">DataTransformer</span>.<span class="fn">normalize</span>(returns, method=<span class="st">'robust'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">add_technical_indicators(data, indicators=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Ajoute des indicateurs techniques à un DataFrame OHLCV. Indicateurs disponibles : <code>'SMA'</code> (20/50/200), <code>'EMA'</code> (12/26), <code>'RSI'</code> (14), <code>'MACD'</code> (12/26/9), <code>'BB'</code> (Bollinger 20), <code>'ATR'</code> (14). Par défaut : <code>['SMA', 'EMA']</code>.</p>
- <table class="params-table">
- <tr><th>Indicateur</th><th>Colonnes ajoutées</th><th>Description</th></tr>
- <tr><td>SMA</td><td class="type">SMA_20, SMA_50, SMA_200</td><td>Moyennes mobiles simples</td></tr>
- <tr><td>EMA</td><td class="type">EMA_12, EMA_26</td><td>Moyennes mobiles exponentielles</td></tr>
- <tr><td>RSI</td><td class="type">RSI</td><td>Relative Strength Index</td></tr>
- <tr><td>MACD</td><td class="type">MACD, MACD_Signal, MACD_Hist</td><td>MACD + signal + histogramme</td></tr>
- <tr><td>BB</td><td class="type">BB_Upper, BB_Middle, BB_Lower</td><td>Bandes de Bollinger</td></tr>
- <tr><td>ATR</td><td class="type">ATR</td><td>Average True Range (nécessite OHLC)</td></tr>
- </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>data_with_indicators = <span class="cl">DataTransformer</span>.<span class="fn">add_technical_indicators</span>(
- ohlcv, indicators=[<span class="st">'SMA'</span>, <span class="st">'EMA'</span>, <span class="st">'RSI'</span>, <span class="st">'MACD'</span>, <span class="st">'BB'</span>, <span class="st">'ATR'</span>]
-)
-<span class="fn">print</span>(data_with_indicators.columns.tolist())</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">create_lagged_features(data, lags=[1, 2, 3, 5])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Crée des features retardées pour les modèles de machine learning. Les NaN initiaux sont supprimés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>features = <span class="cl">DataTransformer</span>.<span class="fn">create_lagged_features</span>(returns, lags=[<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">5</span>, <span class="nb">10</span>])
-<span class="cm"># Ajoute colonnes: col_lag_1, col_lag_2, col_lag_5, col_lag_10</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">rolling_statistics(data, windows=[20, 60, 120])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule des statistiques roulantes (moyenne, écart-type, min, max) pour chaque colonne et chaque fenêtre. Les NaN initiaux sont supprimés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>stats = <span class="cl">DataTransformer</span>.<span class="fn">rolling_statistics</span>(returns, windows=[<span class="nb">20</span>, <span class="nb">60</span>])
-<span class="cm"># Ajoute: col_mean_20, col_std_20, col_min_20, col_max_20, etc.</span></pre></div>
- </div>
- </div>
- </div>
- </div>
-
-</section>
-
- <!-- 
- PORTFOLIO
- -->
- <section id="portfolio">
- <h2 class="section-title"> quantfinance.portfolio</h2>
- <p>Module d'optimisation de portefeuille, d'allocation d'actifs et de backtesting.</p>
-
- <!-- PortfolioOptimizer -->
- <div class="class-card" id="portfoliooptimizer">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">PortfolioOptimizer</div><div class="class-desc">Classe principale pour l'optimisation de portefeuille.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(returns, risk_free_rate=0.02)</div></div></div>
- <div class="method-body"><p class="method-desc">Initialise l'optimiseur avec les rendements historiques et le taux sans risque.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">PortfolioOptimizer</span>
-
-optimizer = <span class="cl">PortfolioOptimizer</span>(returns_df, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">equal_weight()</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Crée un portefeuille équipondéré (poids égaux pour chaque actif).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">equal_weight</span>()
-<span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])
-<span class="fn">print</span>(<span class="st">"Rendement:"</span>, result[<span class="st">'return'</span>])</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">minimize_volatility(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Minimise la volatilité du portefeuille — portefeuille à variance minimale.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">minimize_volatility</span>()
-<span class="fn">print</span>(<span class="st">f"Volatilité minimale: {result['volatility']:.2%}"</span>)
-<span class="fn">print</span>(<span class="st">f"Rendement associé: {result['return']:.2%}"</span>)
-<span class="fn">print</span>(result[<span class="st">'weights'</span>])</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">maximize_sharpe(constraints=None)</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Maximise le ratio de Sharpe — point tangent de la frontière efficiente.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">maximize_sharpe</span>()
-<span class="fn">print</span>(<span class="st">f"Sharpe max: {result['sharpe_ratio']:.3f}"</span>)
-<span class="fn">print</span>(<span class="st">f"Rendement: {result['return']:.2%}"</span>)
-<span class="fn">print</span>(<span class="st">f"Volatilité: {result['volatility']:.2%}"</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">maximize_return(target_volatility)</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Maximise le rendement sous contrainte de volatilité cible. Retourne un objet résultat scipy avec les poids optimaux dans <code>result.x</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">maximize_return</span>(target_volatility=<span class="nb">0.18</span>)
-weights = pd.<span class="cl">Series</span>(result.x, index=optimizer.assets)
-ret, vol, sharpe = optimizer.<span class="fn">portfolio_performance</span>(weights)
-<span class="fn">print</span>(<span class="st">f"Rendement max (vol≤18%): {ret:.2%}"</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">risk_parity()</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Portefeuille de parité de risque — chaque actif contribue également au risque total.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">risk_parity</span>()
-<span class="fn">print</span>(<span class="st">"Contribution au risque:"</span>, result[<span class="st">'risk_contribution'</span>])
-<span class="fn">print</span>(<span class="st">"Poids:"</span>, result[<span class="st">'weights'</span>])</pre></div>
- 
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">portfolio_performance(weights)</div><div class="method-return">→ Tuple[float, float, float]</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule les métriques annualisées d'un portefeuille : rendement, volatilité et ratio de Sharpe.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">import</span> numpy <span class="kw">as</span> np
-weights = np.<span class="fn">array</span>([<span class="nb">0.25</span>, <span class="nb">0.25</span>, <span class="nb">0.25</span>, <span class="nb">0.25</span>])
-ret, vol, sharpe = optimizer.<span class="fn">portfolio_performance</span>(weights)
-<span class="fn">print</span>(<span class="st">f"Rendement: {ret:.2%} | Volatilité: {vol:.2%} | Sharpe: {sharpe:.3f}"</span>)</pre></div>
- </div>
- </div>
-
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">expected_return(weights) / portfolio_volatility(weights)</div><div class="method-return">→ float</div></div></div>
- <div class="method-body"><p class="method-desc">Utilitaires bas niveau — calcule séparément le rendement espéré ou la volatilité d'un portefeuille donné.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>weights = np.<span class="fn">array</span>([<span class="nb">0.4</span>, <span class="nb">0.3</span>, <span class="nb">0.2</span>, <span class="nb">0.1</span>])
-<span class="fn">print</span>(<span class="st">f"Rendement: {optimizer.expected_return(weights):.2%}"</span>)
-<span class="fn">print</span>(<span class="st">f"Volatilité: {optimizer.portfolio_volatility(weights):.2%}"</span>)</pre></div>
- </div>
- </div>
-
- </div>
- </div>
- </div>
- </div>
-
- <!-- EfficientFrontier -->
- <div class="class-card" id="efficientfrontier">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">EfficientFrontier</div><div class="class-desc">Calcul et visualisation de la frontière efficiente de Markowitz.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(optimizer)</div></div></div>
- <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">EfficientFrontier</span>
-
-frontier = <span class="cl">EfficientFrontier</span>(optimizer)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">calculate_frontier(n_points=50, min_return=None, max_return=None)</div><div class="method-return">→ pd.DataFrame</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule les portefeuilles optimaux sur la frontière efficiente.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>frontier_data = frontier.<span class="fn">calculate_frontier</span>(n_points=<span class="nb">50</span>)
-<span class="fn">print</span>(frontier_data.<span class="fn">head</span>())
-<span class="cm"># columns: return, volatility, sharpe_ratio, weights...</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot(show_assets=True, show_optimal=True, figsize=(12,8))</div><div class="method-return">→ Figure</div></div></div>
- <div class="method-body"><p class="method-desc">Trace la frontière efficiente avec les actifs individuels et le portefeuille optimal.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
-
-fig = frontier.<span class="fn">plot</span>(show_assets=<span class="kw">True</span>, show_optimal=<span class="kw">True</span>)
-plt.<span class="fn">show</span>()</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- AssetAllocator -->
- <div class="class-card" id="assetallocator">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">AssetAllocator</div><div class="class-desc">Stratégies d'allocation avancées — HRP, min corrélation, max diversification.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(returns)</div></div></div>
- <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.optimization <span class="kw">import</span> <span class="cl">AssetAllocator</span>
-
-<span class="cm"># Internalement : cov_matrix et std_devs sont annualisés (×252)</span>
-allocator = <span class="cl">AssetAllocator</span>(returns_df) <span class="cm"># returns = rendements quotidiens</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">hierarchical_risk_parity()</div><div class="method-return">→ pd.Series</div></div></div>
- <div class="method-body"><p class="method-desc">Allocation HRP — utilise la hiérarchie des corrélations pour diversifier sans inversion de matrice.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>weights = allocator.<span class="fn">hierarchical_risk_parity</span>()
-<span class="fn">print</span>(<span class="st">"Poids HRP:"</span>, weights)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">minimum_correlation()</div><div class="method-return">→ pd.Series</div></div></div>
- <div class="method-body"><p class="method-desc">Minimise la corrélation moyenne entre les actifs du portefeuille.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>weights = allocator.<span class="fn">minimum_correlation</span>()
-<span class="fn">print</span>(<span class="st">"Poids min corr:"</span>, weights)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">maximum_diversification()</div><div class="method-return">→ pd.Series</div></div></div>
- <div class="method-body"><p class="method-desc">Maximise le ratio de diversification — rapport volatilité pondérée / volatilité portefeuille.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>weights = allocator.<span class="fn">maximum_diversification</span>()
-<span class="fn">print</span>(<span class="st">"Poids max div:"</span>, weights)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- Rebalancer -->
- <div class="class-card" id="rebalancer">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Rebalancer</div><div class="class-desc">Gestion du rééquilibrage de portefeuille.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(target_weights, prices, initial_capital=100000.0, transaction_cost=0.001)</div></div></div>
- <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.rebalancing <span class="kw">import</span> <span class="cl">Rebalancer</span>
-
-rebalancer = <span class="cl">Rebalancer</span>(target_weights, prices_df,
- initial_capital=<span class="nb">100000</span>, transaction_cost=<span class="nb">0.001</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">periodic_rebalancing(frequency='monthly')</div><div class="method-return">→ pd.DataFrame</div></div></div>
- <div class="method-body"><p class="method-desc">Rééquilibre à intervalles fixes. Fréquences : <code>'daily'</code>, <code>'weekly'</code> (lundi), <code>'monthly'</code> (fin de mois), <code>'quarterly'</code>, <code>'yearly'</code>. Retourne un DataFrame avec colonnes : <code>portfolio_value</code>, <code>cash</code>, <code>holdings_value</code>, <code>is_rebalance</code>, <code>weight_&lt;asset&gt;</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>results = rebalancer.<span class="fn">periodic_rebalancing</span>(frequency=<span class="st">'quarterly'</span>)
-<span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">threshold_rebalancing(threshold=0.05)</div><div class="method-return">→ pd.DataFrame</div></div></div>
- <div class="method-body"><p class="method-desc">Rééquilibre uniquement quand un poids dévie de plus de <code>threshold</code> par rapport à la cible. Retourne un DataFrame avec les mêmes colonnes que <code>periodic_rebalancing</code>, plus <code>rebalance_count</code> (compteur cumulatif de rééquilibrages).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="cm"># Rééquilibre si déviation > 3%</span>
-results = rebalancer.<span class="fn">threshold_rebalancing</span>(threshold=<span class="nb">0.03</span>)
-<span class="fn">print</span>(results.<span class="fn">head</span>())</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- Backtester -->
- 
- <!-- Strategy ABC -->
- <div class="class-card" id="strategy-abc">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Strategy (ABC)</div><div class="class-desc">Classe abstraite de base pour toutes les stratégies — à sous-classer pour créer une stratégie personnalisée.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">generate_signals(data)</div><div class="method-return">→ pd.Series · Méthode abstraite</div></div></div>
- <div class="method-body"><p class="method-desc">Génère les signaux de trading. Doit retourner une Series avec les valeurs : <code>1</code> (long), <code>0</code> (neutre), <code>-1</code> (short).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Strategy</span>
-
-<span class="kw">class</span> <span class="cl">MyStrategy</span>(<span class="cl">Strategy</span>):
- <span class="kw">def</span> <span class="fn">generate_signals</span>(<span class="kw">self</span>, data):
- <span class="cm"># Exemple : signal basé sur RSI personnalisé</span>
- close = data[<span class="st">'Close'</span>]
- signal = pd.<span class="cl">Series</span>(<span class="nb">0</span>, index=data.index)
- signal[close > close.<span class="fn">rolling</span>(<span class="nb">20</span>).<span class="fn">mean</span>()] = <span class="nb">1</span>
- signal[close < close.<span class="fn">rolling</span>(<span class="nb">20</span>).<span class="fn">mean</span>()] = <span class="op">-</span><span class="nb">1</span>
- <span class="kw">return</span> signal
-
-strategy = <span class="cl">MyStrategy</span>()
-bt = <span class="cl">Backtester</span>(data, strategy, initial_capital=<span class="nb">10000</span>)
-results = bt.<span class="fn">run</span>()</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <div class="class-card" id="backtester">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Backtester</div><div class="class-desc">Framework de backtesting de stratégies de trading.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(data, strategy, initial_capital=10000.0, commission=0.001)</div></div></div>
- <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">Backtester</span>, <span class="cl">MovingAverageCrossover</span>
-
-strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">20</span>, long_window=<span class="nb">50</span>)
-backtester = <span class="cl">Backtester</span>(prices_df, strategy,
- initial_capital=<span class="nb">10000</span>, commission=<span class="nb">0.0005</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">run()</div><div class="method-return">→ Dict</div></div></div>
- <div class="method-body"><p class="method-desc">Exécute le backtest et retourne les métriques de performance.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>results = backtester.<span class="fn">run</span>()
-<span class="fn">print</span>(<span class="st">f"Capital final: {results['Final Value']:.2f}"</span>)
-<span class="fn">print</span>(<span class="st">f"Rendement total: {results['Total Return']:.2%}"</span>)
-<span class="fn">print</span>(<span class="st">f"Ratio de Sharpe: {results['Sharpe Ratio']:.3f}"</span>)
-<span class="fn">print</span>(<span class="st">f"Max Drawdown: {results['Max Drawdown']:.2%}"</span>)
-<span class="fn">print</span>(<span class="st">f"Nb transactions: {results['Number of Trades']}"</span>)
-<span class="fn">print</span>(<span class="st">f"Win Rate: {results['Win Rate']:.1%}"</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_results(figsize=(14,10))</div><div class="method-return">→ Figure</div></div></div>
- <div class="method-body"><p class="method-desc">Trace la courbe de capital, les signaux de trading et les drawdowns. Lève <code>ValueError</code> si <code>run()</code> n'a pas été appelé avant. Génère 3 sous-graphiques : prix + signaux, valeur du portefeuille, drawdown.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
-fig = backtester.<span class="fn">plot_results</span>()
-plt.<span class="fn">show</span>()</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- Strategies -->
- <div class="class-card" id="strategies">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Stratégies de trading</div><div class="class-desc">Stratégies prêtes à l'emploi pour le backtesting.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">BuyAndHoldStrategy</div><div class="method-return">Stratégie passive</div></div></div>
- <div class="method-body"><p class="method-desc">Achète au début et conserve jusqu'à la fin. Sert de benchmark de référence.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">BuyAndHoldStrategy</span>
-
-strategy = <span class="cl">BuyAndHoldStrategy</span>()
-signals = strategy.<span class="fn">generate_signals</span>(prices_df)
-<span class="fn">print</span>(signals.<span class="fn">head</span>()) <span class="cm"># Toujours 1 (long)</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">MovingAverageCrossover(short_window=20, long_window=50)</div><div class="method-return">Stratégie de tendance</div></div></div>
- <div class="method-body"><p class="method-desc">Signal d'achat quand la MA courte croise la MA longue à la hausse, et de vente à la baisse.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.portfolio.backtesting <span class="kw">import</span> <span class="cl">MovingAverageCrossover</span>
-
-strategy = <span class="cl">MovingAverageCrossover</span>(short_window=<span class="nb">10</span>, long_window=<span class="nb">30</span>)
-signals = strategy.<span class="fn">generate_signals</span>(prices_df)
-<span class="fn">print</span>(signals.<span class="fn">head</span>()) <span class="cm"># 1 = long, -1 = short, 0 = neutre</span>
-
-<span class="cm"># Backtest complet</span>
-bt = <span class="cl">Backtester</span>(prices_df, strategy, initial_capital=<span class="nb">50000</span>)
-results = bt.<span class="fn">run</span>()
-<span class="fn">print</span>(<span class="st">f"Rendement total: {results['Total Return']:.2%}"</span>)</pre></div>
- </div>
- </div>
- </div>
- </div>
- </section>
-
  <!-- 
  UTILS
  -->
@@ -2247,6 +2143,106 @@ gdp = <span class="cl">DataLoader</span>.<span class="fn">download_pandas_datare
 )</pre></div>
  </div>
  </div>
+
+ <!-- DataCleaner -->
+ <div class="class-card" id="datacleaner">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataCleaner</div><div class="class-desc">Nettoyage et préparation de données financières.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">handle_missing_values(data, method='ffill', limit=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Gère les valeurs manquantes. Méthodes : <code>'ffill'</code>, <code>'bfill'</code>, <code>'interpolate'</code>, <code>'drop'</code>, <code>'mean'</code>, <code>'median'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataCleaner</span>
+
+clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'ffill'</span>, limit=<span class="nb">5</span>)
+clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'interpolate'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">remove_outliers(data, n_std=3.0, method='clip')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Retire ou corrige les valeurs aberrantes. Méthodes : <code>'clip'</code> (ajuste aux bornes ±n_std), <code>'remove'</code> (supprime les lignes), <code>'winsorize'</code> (clip aux percentiles 5%/95%).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>clean = <span class="cl">DataCleaner</span>.<span class="fn">remove_outliers</span>(returns, n_std=<span class="nb">3.0</span>, method=<span class="st">'clip'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">winsorize(data, lower_percentile=0.05, upper_percentile=0.95)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Plafonne les valeurs extrêmes aux percentiles spécifiés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>winsorized = <span class="cl">DataCleaner</span>.<span class="fn">winsorize</span>(returns, lower_percentile=<span class="nb">0.01</span>, upper_percentile=<span class="nb">0.99</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">calculate_returns(prices, method='simple', periods=1)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule les rendements à partir des prix. Méthodes : <code>'simple'</code> (arithmétique, pct_change) ou <code>'log'</code> (logarithmique, ln(P_t/P_{t-1})). Supprime automatiquement les NaN.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>returns = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'log'</span>)
+returns_5d = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'simple'</span>, periods=<span class="nb">5</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">align_data(*dataframes, join='inner') / resample_data(data, frequency, method='last')</div><div class="method-return">→ tuple | pd.DataFrame · Méthodes statiques</div></div></div>
+ <div class="method-body"><p class="method-desc"><code>align_data</code> aligne plusieurs DataFrames sur les mêmes dates. <code>resample_data</code> rééchantillonne à une fréquence différente — méthodes : <code>'last'</code>, <code>'first'</code>, <code>'mean'</code>, <code>'sum'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>df1, df2 = <span class="cl">DataCleaner</span>.<span class="fn">align_data</span>(prices1, prices2, join=<span class="st">'inner'</span>)
+monthly = <span class="cl">DataCleaner</span>.<span class="fn">resample_data</span>(daily_prices, frequency=<span class="st">'M'</span>, method=<span class="st">'last'</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- DataTransformer -->
+ <div class="class-card" id="datatransformer">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataTransformer</div><div class="class-desc">Transformations de données financières : normalisation, indicateurs techniques, features ML.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">normalize(data, method='zscore')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Normalise les données. Méthodes : <code>'zscore'</code> (standardisation), <code>'minmax'</code> (0–1), <code>'robust'</code> (médiane/IQR).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataTransformer</span>
+
+normalized = <span class="cl">DataTransformer</span>.<span class="fn">normalize</span>(returns, method=<span class="st">'robust'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">add_technical_indicators(data, indicators=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Ajoute des indicateurs techniques à un DataFrame OHLCV. Indicateurs disponibles : <code>'SMA'</code> (20/50/200), <code>'EMA'</code> (12/26), <code>'RSI'</code> (14), <code>'MACD'</code> (12/26/9), <code>'BB'</code> (Bollinger 20), <code>'ATR'</code> (14). Par défaut : <code>['SMA', 'EMA']</code>.</p>
+ <table class="params-table">
+ <tr><th>Indicateur</th><th>Colonnes ajoutées</th><th>Description</th></tr>
+ <tr><td>SMA</td><td class="type">SMA_20, SMA_50, SMA_200</td><td>Moyennes mobiles simples</td></tr>
+ <tr><td>EMA</td><td class="type">EMA_12, EMA_26</td><td>Moyennes mobiles exponentielles</td></tr>
+ <tr><td>RSI</td><td class="type">RSI</td><td>Relative Strength Index</td></tr>
+ <tr><td>MACD</td><td class="type">MACD, MACD_Signal, MACD_Hist</td><td>MACD + signal + histogramme</td></tr>
+ <tr><td>BB</td><td class="type">BB_Upper, BB_Middle, BB_Lower</td><td>Bandes de Bollinger</td></tr>
+ <tr><td>ATR</td><td class="type">ATR</td><td>Average True Range (nécessite OHLC)</td></tr>
+ </table>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>data_with_indicators = <span class="cl">DataTransformer</span>.<span class="fn">add_technical_indicators</span>(
+ ohlcv, indicators=[<span class="st">'SMA'</span>, <span class="st">'EMA'</span>, <span class="st">'RSI'</span>, <span class="st">'MACD'</span>, <span class="st">'BB'</span>, <span class="st">'ATR'</span>]
+)
+<span class="fn">print</span>(data_with_indicators.columns.tolist())</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">create_lagged_features(data, lags=[1, 2, 3, 5])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Crée des features retardées pour les modèles de machine learning. Les NaN initiaux sont supprimés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>features = <span class="cl">DataTransformer</span>.<span class="fn">create_lagged_features</span>(returns, lags=[<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">5</span>, <span class="nb">10</span>])
+<span class="cm"># Ajoute colonnes: col_lag_1, col_lag_2, col_lag_5, col_lag_10</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">rolling_statistics(data, windows=[20, 60, 120])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule des statistiques roulantes (moyenne, écart-type, min, max) pour chaque colonne et chaque fenêtre. Les NaN initiaux sont supprimés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>stats = <span class="cl">DataTransformer</span>.<span class="fn">rolling_statistics</span>(returns, windows=[<span class="nb">20</span>, <span class="nb">60</span>])
+<span class="cm"># Ajoute: col_mean_20, col_std_20, col_min_20, col_max_20, etc.</span></pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+</section>
 
  <!-- Standalone utility functions -->
  <div class="class-card" id="utils-functions">
