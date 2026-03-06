@@ -296,6 +296,7 @@
  <a href="#yieldcurve" class="sub">YieldCurve</a>
  <a href="#bondportfolio" class="sub">BondPortfolio</a>
  <a href="#impliedvol" class="sub">ImpliedVolatility</a>
+ <a href="#bootstrap-zero-curve" class="sub">bootstrap_zero_curve</a>
  </div>
 
  <div class="sidebar-section">
@@ -891,6 +892,25 @@ dur_approx, full_approx = bond.<span class="fn">price_change_approximation</span
 <span class="fn">print</span>(<span class="st">f"Approx. dur+conv : {full_approx:.4f}€"</span>)</pre></div>
  </div>
  </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">d1() / d2()</div><div class="method-return">→ float</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule d1 et d2 de la formule de Black-Scholes. d1 = [ln(S/K) + (r − q + σ²/2)·T] / (σ√T), d2 = d1 − σ√T.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>bs = <span class="cl">BlackScholes</span>(S=<span class="nb">100</span>, K=<span class="nb">105</span>, T=<span class="nb">1</span>, r=<span class="nb">0.05</span>, sigma=<span class="nb">0.25</span>)
+<span class="fn">print</span>(<span class="st">f"d1={bs.d1():.4f}, d2={bs.d2():.4f}"</span>)</pre></div>
+ </div>
+ </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">greeks()</div><div class="method-return">→ Dict[str, float]</div></div></div>
+ <div class="method-body"><p class="method-desc">Retourne toutes les grecques en une seule fois : <code>{'delta', 'gamma', 'vega', 'theta', 'rho'}</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>g = bs.<span class="fn">greeks</span>()
+<span class="fn">print</span>(<span class="st">f"Delta: {g['delta']:.4f} | Gamma: {g['gamma']:.4f}"</span>)
+<span class="fn">print</span>(<span class="st">f"Vega: {g['vega']:.4f} | Theta: {g['theta']:.4f} | Rho: {g['rho']:.4f}"</span>)</pre></div>
+ </div>
+ </div>
 </div>
  </div>
 
@@ -968,7 +988,16 @@ prix_geo = mc.<span class="fn">price_asian_option</span>(option_type=<span class
 <span class="fn">print</span>(<span class="st">f"Option à barrière up-out: {prix_barriere:.2f}"</span>)</pre></div>
  </div>
  </div>
+ 
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">price_with_confidence_interval(confidence_level=0.95)</div><div class="method-return">→ Tuple[float, float, float]</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule le prix avec intervalle de confiance. Retourne <code>(prix, borne_inf, borne_sup)</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>price, low, high = mc.<span class="fn">price_with_confidence_interval</span>(confidence_level=<span class="nb">0.95</span>)
+<span class="fn">print</span>(<span class="st">f"Prix: {price:.2f} | IC 95%: [{low:.2f}, {high:.2f}]"</span>)</pre></div>
  </div>
+ </div>
+</div>
  </div>
 
  <!-- Bond -->
@@ -1091,7 +1120,16 @@ fig = curve.<span class="fn">plot</span>(method=<span class="st">'cubic'</span>)
 plt.<span class="fn">show</span>()</pre></div>
  </div>
  </div>
+ 
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">instantaneous_forward_rate(maturity, method='cubic', h=0.001)</div><div class="method-return">→ float</div></div></div>
+ <div class="method-body"><p class="method-desc">Taux forward instantané f(t) = r(t) + t · dr/dt, calculé par différence finie.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>ifr = curve.<span class="fn">instantaneous_forward_rate</span>(maturity=<span class="nb">5</span>, method=<span class="st">'cubic'</span>)
+<span class="fn">print</span>(<span class="st">f"Taux forward instantané (5 ans): {ifr:.2%}"</span>)</pre></div>
  </div>
+ </div>
+</div>
  </div>
 
  <!-- BondPortfolio -->
@@ -1464,6 +1502,15 @@ pvar = <span class="cl">VaRCalculator</span>.<span class="fn">portfolio_var</spa
 <span class="fn">print</span>(mvar) <span class="cm"># Actif avec mvar le + bas = meilleure diversification</span></pre></div>
  </div>
  </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">monthly_returns_table()</div><div class="method-return">→ pd.DataFrame</div></div></div>
+ <div class="method-body"><p class="method-desc">Génère une table pivot des rendements mensuels — lignes = années, colonnes = mois (Jan–Déc) + colonne moyenne annuelle. Requiert un index <code>DatetimeIndex</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>table = analyzer.<span class="fn">monthly_returns_table</span>()
+<span class="fn">print</span>(table.<span class="fn">applymap</span>(<span class="kw">lambda</span> x: <span class="st">f"{x:.1%}"</span> <span class="kw">if</span> pd.<span class="fn">notna</span>(x) <span class="kw">else</span> <span class="st">""</span>))</pre></div>
+ </div>
+ </div>
 </div>
  </div>
 
@@ -1611,7 +1658,369 @@ surachete = rsi[rsi <span class="op">></span><span class="nb">70</span>]</pre></
  </div>
  </div>
  </div>
+ 
+
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">generate_ohlcv_data(n_days=252, initial_price=100, volatility=0.02, volume_mean=1000000, random_seed=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Génère des données OHLCV (Open, High, Low, Close, Volume) synthétiques via mouvement brownien géométrique.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>ohlcv = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">252</span>, volatility=<span class="nb">0.02</span>, random_seed=<span class="nb">42</span>)
+<span class="fn">print</span>(ohlcv.head())
+<span class="cm"># Retourne DataFrame avec colonnes: Open, High, Low, Close, Volume</span></pre></div>
+ </div>
+ </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">download_pandas_datareader(tickers, start_date, end_date=None, source='yahoo')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Télécharge des données via pandas-datareader. Nécessite <code>pip install pandas-datareader</code>. Sources disponibles : <code>'yahoo'</code>, <code>'fred'</code>, <code>'iex'</code>, etc.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="cm"># Données FRED (taux d'intérêt, indicateurs macro)</span>
+gdp = <span class="cl">DataLoader</span>.<span class="fn">download_pandas_datareader</span>(
+ tickers=<span class="st">'GDP'</span>, start_date=<span class="st">'2010-01-01'</span>, source=<span class="st">'fred'</span>
+)</pre></div>
+ 
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">scenario_analysis(returns_matrix, weights, scenarios)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Analyse de scénarios de stress définis manuellement. <code>scenarios</code> est un dict <code>{nom: array_chocs}</code> où chaque array contient un choc par actif.</p>
+ <table class="params-table">
+ <tr><th>Paramètre</th><th>Type</th><th>Description</th></tr>
+ <tr><td>scenarios</td><td class="type">Dict[str, np.ndarray]</td><td>Ex: {'Crise 2008': np.array([-0.4, -0.3, -0.1])}</td></tr>
+ </table>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.risk.var <span class="kw">import</span> <span class="cl">StressTesting</span>
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+
+scenarios = {
+ <span class="st">'Crise 2008'</span>: np.<span class="fn">array</span>([<span class="op">-</span><span class="nb">0.40</span>, <span class="op">-</span><span class="nb">0.35</span>, <span class="op">-</span><span class="nb">0.10</span>]),
+ <span class="st">'Covid 2020'</span>: np.<span class="fn">array</span>([<span class="op">-</span><span class="nb">0.30</span>, <span class="op">-</span><span class="nb">0.25</span>, <span class="op">-</span><span class="nb">0.05</span>]),
+ <span class="st">'Hausse taux'</span>: np.<span class="fn">array</span>([<span class="op">-</span><span class="nb">0.05</span>, <span class="op">-</span><span class="nb">0.15</span>, <span class="nb">0.02</span>]),
+}
+result = <span class="cl">StressTesting</span>.<span class="fn">scenario_analysis</span>(returns_matrix, weights, scenarios)
+<span class="fn">print</span>(result) <span class="cm"># Colonnes: Scenario, Portfolio Return, P&L, New Value</span></pre></div>
+ </div>
+ </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">historical_stress_test(returns_matrix, weights, stress_periods)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Stress test basé sur des périodes historiques réelles. <code>stress_periods</code> est un dict <code>{nom: (date_debut, date_fin)}</code>. Retourne rendement cumulé, max drawdown, pire/meilleur jour et volatilité pour chaque période.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>stress_periods = {
+ <span class="st">'Crise financière'</span>: (<span class="st">'2008-09-01'</span>, <span class="st">'2009-03-31'</span>),
+ <span class="st">'Covid crash'</span>: (<span class="st">'2020-02-19'</span>, <span class="st">'2020-03-23'</span>),
+}
+result = <span class="cl">StressTesting</span>.<span class="fn">historical_stress_test</span>(returns_matrix, weights, stress_periods)
+<span class="fn">print</span>(result)</pre></div>
+ </div>
+ </div>
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">monte_carlo_stress_test(returns_matrix, weights, n_scenarios=1000, confidence_levels=[0.95, 0.99], horizon=1, random_seed=None)</div><div class="method-return">→ Dict · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Stress test Monte Carlo — simule <code>n_scenarios</code> scénarios et retourne VaR, ES et distribution des pertes. Clés du dict retourné : <code>scenarios</code>, <code>mean</code>, <code>std</code>, <code>min</code>, <code>max</code>, <code>VaR_95</code>, <code>ES_95</code>, <code>VaR_99</code>, <code>ES_99</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = <span class="cl">StressTesting</span>.<span class="fn">monte_carlo_stress_test</span>(
+ returns_matrix, weights, n_scenarios=<span class="nb">5000</span>, random_seed=<span class="nb">42</span>
+)
+<span class="fn">print</span>(<span class="st">f"VaR 95%: {result['VaR_95']:.2%} | ES 99%: {result['ES_99']:.2%}"</span>)</pre></div>
+ </div>
+ </div>
+</div>
+ </div>
+
+ <!-- DataCleaner -->
+ <div class="class-card" id="datacleaner">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataCleaner</div><div class="class-desc">Nettoyage et préparation de données financières.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">handle_missing_values(data, method='ffill', limit=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Gère les valeurs manquantes. Méthodes : <code>'ffill'</code>, <code>'bfill'</code>, <code>'interpolate'</code>, <code>'drop'</code>, <code>'mean'</code>, <code>'median'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataCleaner</span>
+
+clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'ffill'</span>, limit=<span class="nb">5</span>)
+clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'interpolate'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">remove_outliers(data, n_std=3.0, method='clip')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Retire ou corrige les valeurs aberrantes. Méthodes : <code>'clip'</code> (ajuste aux bornes ±n_std), <code>'remove'</code> (supprime les lignes), <code>'winsorize'</code> (clip aux percentiles 5%/95%).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>clean = <span class="cl">DataCleaner</span>.<span class="fn">remove_outliers</span>(returns, n_std=<span class="nb">3.0</span>, method=<span class="st">'clip'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">winsorize(data, lower_percentile=0.05, upper_percentile=0.95)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Plafonne les valeurs extrêmes aux percentiles spécifiés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>winsorized = <span class="cl">DataCleaner</span>.<span class="fn">winsorize</span>(returns, lower_percentile=<span class="nb">0.01</span>, upper_percentile=<span class="nb">0.99</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">calculate_returns(prices, method='simple', periods=1)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule les rendements à partir des prix. Méthodes : <code>'simple'</code> (arithmétique, pct_change) ou <code>'log'</code> (logarithmique, ln(P_t/P_{t-1})). Supprime automatiquement les NaN.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>returns = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'log'</span>)
+returns_5d = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'simple'</span>, periods=<span class="nb">5</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">align_data(*dataframes, join='inner') / resample_data(data, frequency, method='last')</div><div class="method-return">→ tuple | pd.DataFrame · Méthodes statiques</div></div></div>
+ <div class="method-body"><p class="method-desc"><code>align_data</code> aligne plusieurs DataFrames sur les mêmes dates. <code>resample_data</code> rééchantillonne à une fréquence différente — méthodes : <code>'last'</code>, <code>'first'</code>, <code>'mean'</code>, <code>'sum'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>df1, df2 = <span class="cl">DataCleaner</span>.<span class="fn">align_data</span>(prices1, prices2, join=<span class="st">'inner'</span>)
+monthly = <span class="cl">DataCleaner</span>.<span class="fn">resample_data</span>(daily_prices, frequency=<span class="st">'M'</span>, method=<span class="st">'last'</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- DataTransformer -->
+ <div class="class-card" id="datatransformer">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataTransformer</div><div class="class-desc">Transformations de données financières : normalisation, indicateurs techniques, features ML.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">normalize(data, method='zscore')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Normalise les données. Méthodes : <code>'zscore'</code> (standardisation), <code>'minmax'</code> (0–1), <code>'robust'</code> (médiane/IQR).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataTransformer</span>
+
+normalized = <span class="cl">DataTransformer</span>.<span class="fn">normalize</span>(returns, method=<span class="st">'robust'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">add_technical_indicators(data, indicators=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Ajoute des indicateurs techniques à un DataFrame OHLCV. Indicateurs disponibles : <code>'SMA'</code> (20/50/200), <code>'EMA'</code> (12/26), <code>'RSI'</code> (14), <code>'MACD'</code> (12/26/9), <code>'BB'</code> (Bollinger 20), <code>'ATR'</code> (14). Par défaut : <code>['SMA', 'EMA']</code>.</p>
+ <table class="params-table">
+ <tr><th>Indicateur</th><th>Colonnes ajoutées</th><th>Description</th></tr>
+ <tr><td>SMA</td><td class="type">SMA_20, SMA_50, SMA_200</td><td>Moyennes mobiles simples</td></tr>
+ <tr><td>EMA</td><td class="type">EMA_12, EMA_26</td><td>Moyennes mobiles exponentielles</td></tr>
+ <tr><td>RSI</td><td class="type">RSI</td><td>Relative Strength Index</td></tr>
+ <tr><td>MACD</td><td class="type">MACD, MACD_Signal, MACD_Hist</td><td>MACD + signal + histogramme</td></tr>
+ <tr><td>BB</td><td class="type">BB_Upper, BB_Middle, BB_Lower</td><td>Bandes de Bollinger</td></tr>
+ <tr><td>ATR</td><td class="type">ATR</td><td>Average True Range (nécessite OHLC)</td></tr>
+ </table>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>data_with_indicators = <span class="cl">DataTransformer</span>.<span class="fn">add_technical_indicators</span>(
+ ohlcv, indicators=[<span class="st">'SMA'</span>, <span class="st">'EMA'</span>, <span class="st">'RSI'</span>, <span class="st">'MACD'</span>, <span class="st">'BB'</span>, <span class="st">'ATR'</span>]
+)
+<span class="fn">print</span>(data_with_indicators.columns.tolist())</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">create_lagged_features(data, lags=[1, 2, 3, 5])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Crée des features retardées pour les modèles de machine learning. Les NaN initiaux sont supprimés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>features = <span class="cl">DataTransformer</span>.<span class="fn">create_lagged_features</span>(returns, lags=[<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">5</span>, <span class="nb">10</span>])
+<span class="cm"># Ajoute colonnes: col_lag_1, col_lag_2, col_lag_5, col_lag_10</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">rolling_statistics(data, windows=[20, 60, 120])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule des statistiques roulantes (moyenne, écart-type, min, max) pour chaque colonne et chaque fenêtre. Les NaN initiaux sont supprimés.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>stats = <span class="cl">DataTransformer</span>.<span class="fn">rolling_statistics</span>(returns, windows=[<span class="nb">20</span>, <span class="nb">60</span>])
+<span class="cm"># Ajoute: col_mean_20, col_std_20, col_min_20, col_max_20, etc.</span></pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+</section>
+
+ <!-- Standalone utility functions -->
+ <div class="class-card" id="utils-functions">
+ <div class="class-header"><span class="class-icon">ƒ</span><div><div class="class-name">Fonctions utilitaires</div><div class="class-desc">Fonctions standalone dans <code>quantfinance.utils.helpers</code> pour l'annualisation et la conversion de rendements.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">annualize_return(returns, periods_per_year=252)</div><div class="method-return">→ float | array | Series</div></div></div>
+ <div class="method-body"><p class="method-desc">Annualise un rendement par multiplication simple : <code>returns × periods_per_year</code>. Pour les rendements quotidiens → annuels, utilise 252.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> annualize_return, annualize_volatility
+
+daily_return = <span class="nb">0.0004</span>  <span class="cm"># 0.04%/jour</span>
+annual = <span class="fn">annualize_return</span>(daily_return, periods_per_year=<span class="nb">252</span>)
+<span class="fn">print</span>(<span class="st">f"Rendement annualisé: {annual:.2%}"</span>) <span class="cm"># ≈ 10.08%</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">annualize_volatility(volatility, periods_per_year=252)</div><div class="method-return">→ float | array | Series</div></div></div>
+ <div class="method-body"><p class="method-desc">Annualise une volatilité par la règle en racine carrée du temps : <code>σ × √periods_per_year</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>daily_vol = <span class="nb">0.012</span>  <span class="cm"># 1.2%/jour</span>
+annual_vol = <span class="fn">annualize_volatility</span>(daily_vol)
+<span class="fn">print</span>(<span class="st">f"Volatilité annualisée: {annual_vol:.2%}"</span>) <span class="cm"># ≈ 19.05%</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">compound_returns(returns)</div><div class="method-return">→ float</div></div></div>
+ <div class="method-body"><p class="method-desc">Calcule le rendement composé total : ∏(1 + r_t) − 1.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> compound_returns
+
+total = <span class="fn">compound_returns</span>(daily_returns)
+<span class="fn">print</span>(<span class="st">f"Rendement total: {total:.2%}"</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">deannualize_return(annual_return, periods_per_year=252) / deannualize_volatility(annual_volatility, periods_per_year=252)</div><div class="method-return">→ float</div></div></div>
+ <div class="method-body"><p class="method-desc">Inverses des fonctions d'annualisation. <code>deannualize_return</code> : <code>r / n</code>. <code>deannualize_volatility</code> : <code>σ / √n</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> deannualize_return, deannualize_volatility
+
+daily_r = <span class="fn">deannualize_return</span>(<span class="nb">0.10</span>)  <span class="cm"># 10% annuel → quotidien</span>
+daily_v = <span class="fn">deannualize_volatility</span>(<span class="nb">0.20</span>)  <span class="cm"># 20% annuel → quotidien</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">date_range(start, end, freq='D')</div><div class="method-return">→ pd.DatetimeIndex</div></div></div>
+ <div class="method-body"><p class="method-desc">Crée une plage de dates. Fréquences : <code>'D'</code> (quotidien), <code>'B'</code> (jours ouvrés), <code>'W'</code>, <code>'M'</code>, <code>'Q'</code>, <code>'Y'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> date_range
+
+trading_days = <span class="fn">date_range</span>(<span class="st">'2023-01-01'</span>, <span class="st">'2023-12-31'</span>, freq=<span class="st">'B'</span>)
+<span class="fn">print</span>(<span class="st">f"{len(trading_days)} jours de trading en 2023"</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Plotter -->
+ <div class="class-card" id="plotter">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Plotter</div><div class="class-desc">Visualisations financières de base — prix, rendements, corrélations, drawdowns.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">__init__(style='seaborn-v0_8-darkgrid', figsize=(12, 6))</div></div></div>
+ <div class="method-body">
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.visualization <span class="kw">import</span> <span class="cl">Plotter</span>
+plotter = <span class="cl">Plotter</span>(style=<span class="st">'seaborn-v0_8-darkgrid'</span>, figsize=(<span class="nb">14</span>, <span class="nb">7</span>))</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_prices(prices, title='Prix des Actifs', figsize=(12,6), normalize=False)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Trace l'évolution des prix. Avec <code>normalize=True</code>, réindexe à 100 en début de période pour comparer des actifs à des échelles différentes.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_prices</span>(prices, normalize=<span class="kw">True</span>, title=<span class="st">"Performance relative"</span>)
+fig.<span class="fn">savefig</span>(<span class="st">'prices.png'</span>, dpi=<span class="nb">150</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_returns(returns, title='Distribution des Rendements', figsize=(14,8), bins=50)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Histogramme de distribution des rendements avec courbe normale de référence pour chaque actif.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_returns</span>(returns)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_correlation_matrix(returns, title='Matrice de Corrélation', annot=True, method='pearson')</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Heatmap de corrélation avec triangle inférieur seulement. Méthodes : <code>'pearson'</code>, <code>'spearman'</code>, <code>'kendall'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_correlation_matrix</span>(returns, method=<span class="st">'spearman'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_drawdown(returns, title='Analyse de Drawdown', figsize=(12,8))</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">2 sous-graphiques : valeur cumulée + série de drawdowns avec annotation automatique du max drawdown.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_drawdown</span>(returns)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_portfolio_weights(weights, kind='both')</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Graphique des poids du portefeuille. <code>kind</code> : <code>'bar'</code>, <code>'pie'</code>, ou <code>'both'</code> (barre + camembert côte à côte).</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>result = optimizer.<span class="fn">maximize_sharpe</span>()
+fig = <span class="cl">Plotter</span>.<span class="fn">plot_portfolio_weights</span>(result[<span class="st">'weights'</span>], kind=<span class="st">'both'</span>)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_efficient_frontier(returns, n_portfolios=10000, show_cml=True, risk_free_rate=0.02)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Frontière efficiente Monte Carlo avec actifs individuels, max Sharpe (★ rouge), min volatilité (★ vert) et Capital Market Line (CML) optionnelle.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_efficient_frontier</span>(returns, n_portfolios=<span class="nb">5000</span>, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- FinancialPlotter -->
+ <div class="class-card" id="financialplotter">
+ <div class="class-header"><span class="class-icon"></span><div><div class="class-name">FinancialPlotter</div><div class="class-desc">Graphiques financiers avancés — chandeliers, scatter risque/rendement, métriques roulantes.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_candlestick(data, title='Graphique en Chandelier', figsize=(14,8), volume=True)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Graphique en chandelier. Utilise <code>mplfinance</code> si installé, sinon fallback manuel. Requiert un DataFrame OHLCV avec colonnes <code>Open, High, Low, Close</code> et index <code>DatetimeIndex</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.utils.visualization <span class="kw">import</span> <span class="cl">FinancialPlotter</span>
+
+ohlcv = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">60</span>)
+fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_candlestick</span>(ohlcv, volume=<span class="kw">True</span>)
+<span class="cm"># pip install mplfinance pour graphique complet</span></pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_risk_return_scatter(returns, figsize=(12,8), periods_per_year=252)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Nuage de points risque (volatilité annualisée) vs rendement annualisé pour chaque actif.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_risk_return_scatter</span>(returns)</pre></div>
+ </div>
+ </div>
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">plot_rolling_metrics(returns, window=60, figsize=(14,10), periods_per_year=252)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">3 sous-graphiques roulants : rendement annualisé, volatilité annualisée, ratio de Sharpe.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_rolling_metrics</span>(
+ returns=portfolio_returns, window=<span class="nb">60</span>
+)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
  </section>
+
+</div>
+
+</html
+ <!-- bootstrap_zero_curve -->
+ <div class="class-card" id="bootstrap-zero-curve">
+ <div class="class-header"><span class="class-icon">ƒ</span><div><div class="class-name">bootstrap_zero_curve()</div><div class="class-desc">Fonction standalone — bootstrap d'une courbe zéro-coupon à partir de prix d'obligations.</div></div></div>
+ <div class="class-body">
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">bootstrap_zero_curve(bond_prices, coupon_rates, maturities, face_value=100, frequency=2)</div><div class="method-return">→ YieldCurve</div></div></div>
+ <div class="method-body"><p class="method-desc">Bootstrap une courbe de taux zéro-coupon à partir d'une liste de prix d'obligations. Retourne un objet <code>YieldCurve</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre><span class="kw">from</span> quantfinance.pricing.bonds <span class="kw">import</span> bootstrap_zero_curve
+
+prices = [<span class="nb">99.5</span>, <span class="nb">98.0</span>, <span class="nb">96.5</span>, <span class="nb">94.0</span>]
+coupons = [<span class="nb">0.02</span>, <span class="nb">0.03</span>, <span class="nb">0.04</span>, <span class="nb">0.05</span>]
+maturities = [<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">3</span>, <span class="nb">5</span>]
+
+zero_curve = <span class="fn">bootstrap_zero_curve</span>(prices, coupons, maturities)
+<span class="fn">print</span>(<span class="st">f"Taux zéro 3 ans: {zero_curve.interpolate(3):.2%}"</span>)</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="method-card">
+ <div class="method-header"><div><div class="method-signature">download_yahoo_finance(tickers, start_date, end_date=None, column='Adj Close', interval='1d')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
+ <div class="method-body"><p class="method-desc">Télécharge des données depuis Yahoo Finance. Nécessite <code>pip install yfinance</code>. Colonnes disponibles : <code>'Open'</code>, <code>'High'</code>, <code>'Low'</code>, <code>'Close'</code>, <code>'Adj Close'</code>, <code>'Volume'</code>. Intervalles : <code>'1d'</code>, <code>'1wk'</code>, <code>'1mo'</code>.</p>
+ <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
+<pre>prices = <span class="cl">DataLoader</span>.<span class="fn">download_yahoo_finance</span>(
+ tickers=[<span class="st">'AAPL'</span>, <span class="st">'MSFT'</span>, <span class="st">'GOOGL'</span>],
+ start_date=<span class="st">'2020-01-01'</span>,
+ end_date=<span class="st">'2024-01-01'</span>,
+ column=<span class="st">'Adj Close'</span>
+)
+<span class="fn">print</span>(prices.tail())</pre></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+</section>
 
       <section id="formulas">
  <h2 class="section-title"> Formules mathématiques</h2>
@@ -2121,281 +2530,5 @@ function toggleTheme() {
   });
 })();
 </script>
-</body>
-</html
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">generate_ohlcv_data(n_days=252, initial_price=100, volatility=0.02, volume_mean=1000000, random_seed=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Génère des données OHLCV (Open, High, Low, Close, Volume) synthétiques via mouvement brownien géométrique.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>ohlcv = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">252</span>, volatility=<span class="nb">0.02</span>, random_seed=<span class="nb">42</span>)
-<span class="fn">print</span>(ohlcv.head())
-<span class="cm"># Retourne DataFrame avec colonnes: Open, High, Low, Close, Volume</span></pre></div>
- </div>
- </div>
-
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">download_pandas_datareader(tickers, start_date, end_date=None, source='yahoo')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Télécharge des données via pandas-datareader. Nécessite <code>pip install pandas-datareader</code>. Sources disponibles : <code>'yahoo'</code>, <code>'fred'</code>, <code>'iex'</code>, etc.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="cm"># Données FRED (taux d'intérêt, indicateurs macro)</span>
-gdp = <span class="cl">DataLoader</span>.<span class="fn">download_pandas_datareader</span>(
- tickers=<span class="st">'GDP'</span>, start_date=<span class="st">'2010-01-01'</span>, source=<span class="st">'fred'</span>
-)</pre></div>
- </div>
- </div>
-
- <!-- DataCleaner -->
- <div class="class-card" id="datacleaner">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataCleaner</div><div class="class-desc">Nettoyage et préparation de données financières.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">handle_missing_values(data, method='ffill', limit=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Gère les valeurs manquantes. Méthodes : <code>'ffill'</code>, <code>'bfill'</code>, <code>'interpolate'</code>, <code>'drop'</code>, <code>'mean'</code>, <code>'median'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataCleaner</span>
-
-clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'ffill'</span>, limit=<span class="nb">5</span>)
-clean = <span class="cl">DataCleaner</span>.<span class="fn">handle_missing_values</span>(prices, method=<span class="st">'interpolate'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">remove_outliers(data, n_std=3.0, method='clip')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Retire ou corrige les valeurs aberrantes. Méthodes : <code>'clip'</code> (ajuste aux bornes ±n_std), <code>'remove'</code> (supprime les lignes), <code>'winsorize'</code> (clip aux percentiles 5%/95%).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>clean = <span class="cl">DataCleaner</span>.<span class="fn">remove_outliers</span>(returns, n_std=<span class="nb">3.0</span>, method=<span class="st">'clip'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">winsorize(data, lower_percentile=0.05, upper_percentile=0.95)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Plafonne les valeurs extrêmes aux percentiles spécifiés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>winsorized = <span class="cl">DataCleaner</span>.<span class="fn">winsorize</span>(returns, lower_percentile=<span class="nb">0.01</span>, upper_percentile=<span class="nb">0.99</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">calculate_returns(prices, method='simple', periods=1)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule les rendements à partir des prix. Méthodes : <code>'simple'</code> (arithmétique, pct_change) ou <code>'log'</code> (logarithmique, ln(P_t/P_{t-1})). Supprime automatiquement les NaN.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>returns = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'log'</span>)
-returns_5d = <span class="cl">DataCleaner</span>.<span class="fn">calculate_returns</span>(prices, method=<span class="st">'simple'</span>, periods=<span class="nb">5</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">align_data(*dataframes, join='inner') / resample_data(data, frequency, method='last')</div><div class="method-return">→ tuple | pd.DataFrame · Méthodes statiques</div></div></div>
- <div class="method-body"><p class="method-desc"><code>align_data</code> aligne plusieurs DataFrames sur les mêmes dates. <code>resample_data</code> rééchantillonne à une fréquence différente — méthodes : <code>'last'</code>, <code>'first'</code>, <code>'mean'</code>, <code>'sum'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>df1, df2 = <span class="cl">DataCleaner</span>.<span class="fn">align_data</span>(prices1, prices2, join=<span class="st">'inner'</span>)
-monthly = <span class="cl">DataCleaner</span>.<span class="fn">resample_data</span>(daily_prices, frequency=<span class="st">'M'</span>, method=<span class="st">'last'</span>)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- DataTransformer -->
- <div class="class-card" id="datatransformer">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">DataTransformer</div><div class="class-desc">Transformations de données financières : normalisation, indicateurs techniques, features ML.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">normalize(data, method='zscore')</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Normalise les données. Méthodes : <code>'zscore'</code> (standardisation), <code>'minmax'</code> (0–1), <code>'robust'</code> (médiane/IQR).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.data <span class="kw">import</span> <span class="cl">DataTransformer</span>
-
-normalized = <span class="cl">DataTransformer</span>.<span class="fn">normalize</span>(returns, method=<span class="st">'robust'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">add_technical_indicators(data, indicators=None)</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Ajoute des indicateurs techniques à un DataFrame OHLCV. Indicateurs disponibles : <code>'SMA'</code> (20/50/200), <code>'EMA'</code> (12/26), <code>'RSI'</code> (14), <code>'MACD'</code> (12/26/9), <code>'BB'</code> (Bollinger 20), <code>'ATR'</code> (14). Par défaut : <code>['SMA', 'EMA']</code>.</p>
- <table class="params-table">
- <tr><th>Indicateur</th><th>Colonnes ajoutées</th><th>Description</th></tr>
- <tr><td>SMA</td><td class="type">SMA_20, SMA_50, SMA_200</td><td>Moyennes mobiles simples</td></tr>
- <tr><td>EMA</td><td class="type">EMA_12, EMA_26</td><td>Moyennes mobiles exponentielles</td></tr>
- <tr><td>RSI</td><td class="type">RSI</td><td>Relative Strength Index</td></tr>
- <tr><td>MACD</td><td class="type">MACD, MACD_Signal, MACD_Hist</td><td>MACD + signal + histogramme</td></tr>
- <tr><td>BB</td><td class="type">BB_Upper, BB_Middle, BB_Lower</td><td>Bandes de Bollinger</td></tr>
- <tr><td>ATR</td><td class="type">ATR</td><td>Average True Range (nécessite OHLC)</td></tr>
- </table>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>data_with_indicators = <span class="cl">DataTransformer</span>.<span class="fn">add_technical_indicators</span>(
- ohlcv, indicators=[<span class="st">'SMA'</span>, <span class="st">'EMA'</span>, <span class="st">'RSI'</span>, <span class="st">'MACD'</span>, <span class="st">'BB'</span>, <span class="st">'ATR'</span>]
-)
-<span class="fn">print</span>(data_with_indicators.columns.tolist())</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">create_lagged_features(data, lags=[1, 2, 3, 5])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Crée des features retardées pour les modèles de machine learning. Les NaN initiaux sont supprimés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>features = <span class="cl">DataTransformer</span>.<span class="fn">create_lagged_features</span>(returns, lags=[<span class="nb">1</span>, <span class="nb">2</span>, <span class="nb">5</span>, <span class="nb">10</span>])
-<span class="cm"># Ajoute colonnes: col_lag_1, col_lag_2, col_lag_5, col_lag_10</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">rolling_statistics(data, windows=[20, 60, 120])</div><div class="method-return">→ pd.DataFrame · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule des statistiques roulantes (moyenne, écart-type, min, max) pour chaque colonne et chaque fenêtre. Les NaN initiaux sont supprimés.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>stats = <span class="cl">DataTransformer</span>.<span class="fn">rolling_statistics</span>(returns, windows=[<span class="nb">20</span>, <span class="nb">60</span>])
-<span class="cm"># Ajoute: col_mean_20, col_std_20, col_min_20, col_max_20, etc.</span></pre></div>
- </div>
- </div>
- </div>
- </div>
-
-</section>
-
- <!-- Standalone utility functions -->
- <div class="class-card" id="utils-functions">
- <div class="class-header"><span class="class-icon">ƒ</span><div><div class="class-name">Fonctions utilitaires</div><div class="class-desc">Fonctions standalone dans <code>quantfinance.utils.helpers</code> pour l'annualisation et la conversion de rendements.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">annualize_return(returns, periods_per_year=252)</div><div class="method-return">→ float | array | Series</div></div></div>
- <div class="method-body"><p class="method-desc">Annualise un rendement par multiplication simple : <code>returns × periods_per_year</code>. Pour les rendements quotidiens → annuels, utilise 252.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> annualize_return, annualize_volatility
-
-daily_return = <span class="nb">0.0004</span>  <span class="cm"># 0.04%/jour</span>
-annual = <span class="fn">annualize_return</span>(daily_return, periods_per_year=<span class="nb">252</span>)
-<span class="fn">print</span>(<span class="st">f"Rendement annualisé: {annual:.2%}"</span>) <span class="cm"># ≈ 10.08%</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">annualize_volatility(volatility, periods_per_year=252)</div><div class="method-return">→ float | array | Series</div></div></div>
- <div class="method-body"><p class="method-desc">Annualise une volatilité par la règle en racine carrée du temps : <code>σ × √periods_per_year</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>daily_vol = <span class="nb">0.012</span>  <span class="cm"># 1.2%/jour</span>
-annual_vol = <span class="fn">annualize_volatility</span>(daily_vol)
-<span class="fn">print</span>(<span class="st">f"Volatilité annualisée: {annual_vol:.2%}"</span>) <span class="cm"># ≈ 19.05%</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">compound_returns(returns)</div><div class="method-return">→ float</div></div></div>
- <div class="method-body"><p class="method-desc">Calcule le rendement composé total : ∏(1 + r_t) − 1.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> compound_returns
-
-total = <span class="fn">compound_returns</span>(daily_returns)
-<span class="fn">print</span>(<span class="st">f"Rendement total: {total:.2%}"</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">deannualize_return(annual_return, periods_per_year=252) / deannualize_volatility(annual_volatility, periods_per_year=252)</div><div class="method-return">→ float</div></div></div>
- <div class="method-body"><p class="method-desc">Inverses des fonctions d'annualisation. <code>deannualize_return</code> : <code>r / n</code>. <code>deannualize_volatility</code> : <code>σ / √n</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> deannualize_return, deannualize_volatility
-
-daily_r = <span class="fn">deannualize_return</span>(<span class="nb">0.10</span>)  <span class="cm"># 10% annuel → quotidien</span>
-daily_v = <span class="fn">deannualize_volatility</span>(<span class="nb">0.20</span>)  <span class="cm"># 20% annuel → quotidien</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">date_range(start, end, freq='D')</div><div class="method-return">→ pd.DatetimeIndex</div></div></div>
- <div class="method-body"><p class="method-desc">Crée une plage de dates. Fréquences : <code>'D'</code> (quotidien), <code>'B'</code> (jours ouvrés), <code>'W'</code>, <code>'M'</code>, <code>'Q'</code>, <code>'Y'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.helpers <span class="kw">import</span> date_range
-
-trading_days = <span class="fn">date_range</span>(<span class="st">'2023-01-01'</span>, <span class="st">'2023-12-31'</span>, freq=<span class="st">'B'</span>)
-<span class="fn">print</span>(<span class="st">f"{len(trading_days)} jours de trading en 2023"</span>)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- Plotter -->
- <div class="class-card" id="plotter">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">Plotter</div><div class="class-desc">Visualisations financières de base — prix, rendements, corrélations, drawdowns.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">__init__(style='seaborn-v0_8-darkgrid', figsize=(12, 6))</div></div></div>
- <div class="method-body">
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.visualization <span class="kw">import</span> <span class="cl">Plotter</span>
-plotter = <span class="cl">Plotter</span>(style=<span class="st">'seaborn-v0_8-darkgrid'</span>, figsize=(<span class="nb">14</span>, <span class="nb">7</span>))</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_prices(prices, title='Prix des Actifs', figsize=(12,6), normalize=False)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Trace l'évolution des prix. Avec <code>normalize=True</code>, réindexe à 100 en début de période pour comparer des actifs à des échelles différentes.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_prices</span>(prices, normalize=<span class="kw">True</span>, title=<span class="st">"Performance relative"</span>)
-fig.<span class="fn">savefig</span>(<span class="st">'prices.png'</span>, dpi=<span class="nb">150</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_returns(returns, title='Distribution des Rendements', figsize=(14,8), bins=50)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Histogramme de distribution des rendements avec courbe normale de référence pour chaque actif.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_returns</span>(returns)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_correlation_matrix(returns, title='Matrice de Corrélation', annot=True, method='pearson')</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Heatmap de corrélation avec triangle inférieur seulement. Méthodes : <code>'pearson'</code>, <code>'spearman'</code>, <code>'kendall'</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_correlation_matrix</span>(returns, method=<span class="st">'spearman'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_drawdown(returns, title='Analyse de Drawdown', figsize=(12,8))</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">2 sous-graphiques : valeur cumulée + série de drawdowns avec annotation automatique du max drawdown.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_drawdown</span>(returns)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_portfolio_weights(weights, kind='both')</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Graphique des poids du portefeuille. <code>kind</code> : <code>'bar'</code>, <code>'pie'</code>, ou <code>'both'</code> (barre + camembert côte à côte).</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>result = optimizer.<span class="fn">maximize_sharpe</span>()
-fig = <span class="cl">Plotter</span>.<span class="fn">plot_portfolio_weights</span>(result[<span class="st">'weights'</span>], kind=<span class="st">'both'</span>)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_efficient_frontier(returns, n_portfolios=10000, show_cml=True, risk_free_rate=0.02)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Frontière efficiente Monte Carlo avec actifs individuels, max Sharpe (★ rouge), min volatilité (★ vert) et Capital Market Line (CML) optionnelle.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">Plotter</span>.<span class="fn">plot_efficient_frontier</span>(returns, n_portfolios=<span class="nb">5000</span>, risk_free_rate=<span class="nb">0.03</span>)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- <!-- FinancialPlotter -->
- <div class="class-card" id="financialplotter">
- <div class="class-header"><span class="class-icon"></span><div><div class="class-name">FinancialPlotter</div><div class="class-desc">Graphiques financiers avancés — chandeliers, scatter risque/rendement, métriques roulantes.</div></div></div>
- <div class="class-body">
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_candlestick(data, title='Graphique en Chandelier', figsize=(14,8), volume=True)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Graphique en chandelier. Utilise <code>mplfinance</code> si installé, sinon fallback manuel. Requiert un DataFrame OHLCV avec colonnes <code>Open, High, Low, Close</code> et index <code>DatetimeIndex</code>.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.visualization <span class="kw">import</span> <span class="cl">FinancialPlotter</span>
-
-ohlcv = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">60</span>)
-fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_candlestick</span>(ohlcv, volume=<span class="kw">True</span>)
-<span class="cm"># pip install mplfinance pour graphique complet</span></pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_risk_return_scatter(returns, figsize=(12,8), periods_per_year=252)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">Nuage de points risque (volatilité annualisée) vs rendement annualisé pour chaque actif.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_risk_return_scatter</span>(returns)</pre></div>
- </div>
- </div>
- <div class="method-card">
- <div class="method-header"><div><div class="method-signature">plot_rolling_metrics(returns, window=60, figsize=(14,10), periods_per_year=252)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
- <div class="method-body"><p class="method-desc">3 sous-graphiques roulants : rendement annualisé, volatilité annualisée, ratio de Sharpe.</p>
- <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre>fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_rolling_metrics</span>(
- returns=portfolio_returns, window=<span class="nb">60</span>
-)</pre></div>
- </div>
- </div>
- </div>
- </div>
-
- </section>
-
-</div>
 </body>
 </html>
