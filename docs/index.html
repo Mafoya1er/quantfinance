@@ -2114,7 +2114,7 @@ trading_days = <span class="fn">date_range</span>(<span class="st">'2023-01-01'<
  <div class="method-header"><div><div class="method-signature">__init__(style='seaborn-v0_8-darkgrid', figsize=(12, 6))</div></div></div>
  <div class="method-body">
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.plotting<span class="kw">import</span> <span class="cl">Plotter</span>
+<pre><span class="kw">from</span> quantfinance.utils.plotting <span class="kw">import</span> <span class="cl">Plotter</span>
 plotter = <span class="cl">Plotter</span>(style=<span class="st">'seaborn-v0_8-darkgrid'</span>, figsize=(<span class="nb">14</span>, <span class="nb">7</span>))</pre></div>
  </div>
  </div>
@@ -2173,7 +2173,7 @@ fig = <span class="cl">Plotter</span>.<span class="fn">plot_portfolio_weights</s
  <div class="method-header"><div><div class="method-signature">plot_candlestick(data, title='Graphique en Chandelier', figsize=(14,8), volume=True)</div><div class="method-return">→ Figure · Méthode statique</div></div></div>
  <div class="method-body"><p class="method-desc">Graphique en chandelier. Utilise <code>mplfinance</code> si installé, sinon fallback manuel. Requiert un DataFrame OHLCV avec colonnes <code>Open, High, Low, Close</code> et index <code>DatetimeIndex</code>.</p>
  <div class="code-block"><div class="code-header"><div class="code-dot red"></div><div class="code-dot yellow"></div><div class="code-dot green"></div><span class="code-label">python</span><button class="copy-btn" onclick="copyCode(this)" title="Copier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copier</button></div>
-<pre><span class="kw">from</span> quantfinance.utils.plotting<span class="kw">import</span> <span class="cl">FinancialPlotter</span>
+<pre><span class="kw">from</span> quantfinance.utils.plotting <span class="kw">import</span> <span class="cl">FinancialPlotter</span>
 
 ohlcv = <span class="cl">DataLoader</span>.<span class="fn">generate_ohlcv_data</span>(n_days=<span class="nb">60</span>)
 fig = <span class="cl">FinancialPlotter</span>.<span class="fn">plot_candlestick</span>(ohlcv, volume=<span class="kw">True</span>)
